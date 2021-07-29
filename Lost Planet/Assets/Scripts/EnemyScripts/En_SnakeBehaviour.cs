@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class En_SnakeBehaviour : MonoBehaviour
+public class En_SnakeBehaviour : EnemyBase
 {
 
     private Rigidbody2D rb;
+    private Vector2 moveDir = Vector2.left;
 
     private void Awake()
     {
@@ -25,9 +26,8 @@ public class En_SnakeBehaviour : MonoBehaviour
     
     protected virtual void Movement()
     {
-        //Vector2 moveVelocity = new Vector2()
-        rb.MovePosition(transform.position - transform.right * GetComponent<EnemyBase>().moveSpeed);
-        //rb.AddForce(GetComponent<EnemyBase>().moveSpeed)
+        //rb.MovePosition(transform.position - transform.right * GetComponent<EnemyBase>().moveSpeed);
+        rb.AddForce(moveDir * moveSpeed, ForceMode2D.Force);
 
     }
 }
