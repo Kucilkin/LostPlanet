@@ -6,8 +6,7 @@ public class EnemyBase : MonoBehaviour
 {
     [SerializeField]
     private float damage;
-    [SerializeField]
-    private float moveSpeed;
+    public float moveSpeed;
 
     public float Damage { get { return damage; } }
 }

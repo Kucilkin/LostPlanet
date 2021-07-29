@@ -20,12 +20,14 @@ public class En_SnakeBehaviour : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
             collision.gameObject.GetComponent<HealthSystem>().GetDamaged(GetComponent<EnemyBase>().Damage) ;
-            //Execute Player's "Damaged" Method
     }
 
     
     protected virtual void Movement()
     {
-        rb.MovePosition(transform.position - transform.right * moveSpeed);
+        //Vector2 moveVelocity = new Vector2()
+        rb.MovePosition(transform.position - transform.right * GetComponent<EnemyBase>().moveSpeed);
+        //rb.AddForce(GetComponent<EnemyBase>().moveSpeed)
+
     }
 }

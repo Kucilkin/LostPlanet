@@ -21,7 +21,7 @@ public class PlayerProjBehaviour : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy")
         {
-            collision.gameObject.GetComponent<En_SnakeBehaviour>().GetDamaged(PlayerGun.Damage);
+            collision.gameObject.GetComponent<HealthSystem>().GetDamaged(PlayerGun.Damage);
             Destroy(gameObject);
 
         }
