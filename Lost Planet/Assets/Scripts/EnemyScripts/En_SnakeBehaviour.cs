@@ -17,14 +17,10 @@ public class En_SnakeBehaviour : EnemyBase
     {
         Movement();
     }
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "Player")
-            collision.gameObject.GetComponent<HealthSystem>().GetDamaged(GetComponent<EnemyBase>().Damage) ;
-    }
+   
 
     
-    protected virtual void Movement()
+    protected override void Movement()
     {
         //rb.MovePosition(transform.position - transform.right * GetComponent<EnemyBase>().moveSpeed);
         rb.AddForce(moveDir * moveSpeed, ForceMode2D.Force);
