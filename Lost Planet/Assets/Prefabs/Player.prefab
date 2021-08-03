@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6907264315667082268}
   - component: {fileID: 6907264315667082271}
   - component: {fileID: 6907264315667082270}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -106,7 +106,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6907264315688359711}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: FeetTransform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -141,7 +141,8 @@ GameObject:
   - component: {fileID: 6907264315736388078}
   - component: {fileID: 6907264315736388074}
   - component: {fileID: 6907264315736388069}
-  m_Layer: 0
+  - component: {fileID: 8300377281648482137}
+  m_Layer: 7
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -298,3 +299,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DashSpeed: 50
   StartDashTime: 0.1
+--- !u!114 &8300377281648482137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6907264315736388079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6cb4272537d52a46a52e657ff4e2de0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHP: 100
