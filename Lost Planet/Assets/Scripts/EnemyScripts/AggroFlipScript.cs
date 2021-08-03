@@ -9,6 +9,6 @@ public class AggroFlipScript : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
-            GetComponent<En_BatBehaviour>().aggro = true;
+            GetComponentInParent<En_BatBehaviour>().aggro = true;
     }
 }

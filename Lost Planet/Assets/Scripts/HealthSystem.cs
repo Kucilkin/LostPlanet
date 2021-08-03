@@ -16,6 +16,7 @@ public class HealthSystem : MonoBehaviour
     /// Subtracts _damage value from current HP of the entity this method gets called by
     /// </summary>
     /// <param name="_damage">The value the HP should be reduced by</param>
+
     public void GetDamaged(float _damage)
     {
         currHP -= _damage;
@@ -25,6 +26,7 @@ public class HealthSystem : MonoBehaviour
     /// <summary>
     /// Gets called when the entity has no HP left. Plays the Death animation and Destroys the object afterwards
     /// </summary>
+
     public void Die()
     {
         Destroy(gameObject);
