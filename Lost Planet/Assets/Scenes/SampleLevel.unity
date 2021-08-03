@@ -6647,7 +6647,7 @@ GameObject:
   - component: {fileID: 1028269241}
   - component: {fileID: 1028269240}
   - component: {fileID: 1028269242}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Middleground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12255,11 +12255,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6907264315736388075, guid: 21c5db9aa45e5704580561d6f1bbed52, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.488622
+      value: 7.21
       objectReference: {fileID: 0}
     - target: {fileID: 6907264315736388075, guid: 21c5db9aa45e5704580561d6f1bbed52, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.6439553
+      value: -0.47
       objectReference: {fileID: 0}
     - target: {fileID: 6907264315736388075, guid: 21c5db9aa45e5704580561d6f1bbed52, type: 3}
       propertyPath: m_LocalPosition.z
@@ -12309,6 +12309,10 @@ PrefabInstance:
     - target: {fileID: 1021403385440810048, guid: 1226c76fc5b74054cb5ce78272b2d9ec, type: 3}
       propertyPath: m_Name
       value: En_Bat
+      objectReference: {fileID: 0}
+    - target: {fileID: 1021403385440810051, guid: 1226c76fc5b74054cb5ce78272b2d9ec, type: 3}
+      propertyPath: moveSpeed
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 1021403385440810054, guid: 1226c76fc5b74054cb5ce78272b2d9ec, type: 3}
       propertyPath: m_RootOrder
