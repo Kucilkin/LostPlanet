@@ -6,10 +6,21 @@ public class En_SnakeBehaviour : EnemyBase
 {
 
     private Rigidbody2D rb;
-    private Vector2 moveDir = Vector2.left;
+    private Vector2 moveDir;
+
+    public SpriteRenderer SnakeSprite;
+    private bool objectFlip;
+
+    public LayerMask GroundLayer;
+    public Vector2 BoxDimG;     //Box Dimensions Ground
+    public Vector2 BoxDimW;     //Box Dimensions Wall
+    public Transform GroundBox;
+    public Transform WallBox;
+
 
     private void Awake()
     {
+        moveDir = Vector2.left;
         rb = gameObject.GetComponent<Rigidbody2D>();
     }
     
@@ -18,20 +29,28 @@ public class En_SnakeBehaviour : EnemyBase
         Movement();
     }
 
-
-
     protected override void Movement()
     {
         //rb.MovePosition(transform.position - transform.right * GetComponent<EnemyBase>().moveSpeed);
         rb.AddForce(moveDir * moveSpeed, ForceMode2D.Force);
     }
-    private void OnCollisionEnter2D(Collision2D collision)
+
+    private void TurnCheck()
     {
-        if (collision.gameObject.tag == "Player")
-            collision.gameObject.GetComponent<HealthSystem>().GetDamaged(GetComponent<EnemyBase>().Damage) ;
+        Collider2D groundBox = Physics2D.OverlapBox(GroundBox.position, BoxDimG, 1, GroundLayer);
+        Collider2D wallBox = Physics2D.OverlapBox(WallBox.position, BoxDimW, 1, GroundLayer);
+
+        if (objectFlip == true)
+            //gameObject.transform.rotation.y
+
+
+
+        if (groundBox == false || wallBox == true)
+            gameObject.transform.rotation.y += 180;
     }
 
-    
+
+
     //protected virtual void Movement()
     //{
     //    //Vector2 moveVelocity = new Vector2()

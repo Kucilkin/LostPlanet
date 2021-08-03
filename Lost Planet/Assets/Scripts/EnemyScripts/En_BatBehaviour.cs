@@ -8,19 +8,21 @@ public class En_BatBehaviour : EnemyBase
     [SerializeField]
     private Transform player;
     private Vector2 targetDir;
-    public bool aggro;
+    //public bool aggro;
 
     private void Awake()
     {
-        aggro = false;
+       //ggro = false;
         rb = gameObject.GetComponent<Rigidbody2D>();    //Securing a Rigidbody reference for movement method
         player = FindObjectOfType<PlayerController>().transform;
         targetDir = player.position - transform.position;
     }
     private void FixedUpdate()
     {
-        if (aggro == true)
+        if (targetDir.magnitude <= 15)
             StartCoroutine("BatMovement");
+
+        //if (aggro == true)
     }
 
     private IEnumerator BatMovement()
