@@ -5,7 +5,6 @@ using UnityEngine;
 public class EnemyBase : MonoBehaviour
 {
     [SerializeField]
-<<<<<<< HEAD
     private float damage;       //The Damage the enemy deals through contact
     public float moveSpeed;     //The movement speed of the enemy
 
@@ -23,10 +22,4 @@ public class EnemyBase : MonoBehaviour
         if (collision.gameObject.tag == "Player")
             collision.gameObject.GetComponent<HealthSystem>().GetDamaged(GetComponent<EnemyBase>().Damage);
     }
-=======
-    private float damage;
-    public float moveSpeed;
-
-    public float Damage { get { return damage; } }
->>>>>>> main
 }
