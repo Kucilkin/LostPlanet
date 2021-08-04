@@ -28,22 +28,23 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         xInput = Input.GetAxisRaw("Horizontal"); //Eingabesignal fürs laufen
-        //GroundCheck(); // GroundCheck aufrufen
+        GroundCheck(); // GroundCheck aufrufen
 
         //Drehen:
-        //if (xInput > 0f) // nach rechts gehen
-        //    towardsY = 0f;
-        //else if (xInput < 0f) // nach links gehen
-        //    towardsY = 180f;
+        if (xInput > 0f) // nach rechts gehen
+            towardsY = 0f;
+        else if (xInput < 0f) // nach links gehen
+            towardsY = 180f;
 
-        //playerModel.transform.rotation = Quaternion.Lerp(playerModel.transform.rotation, Quaternion.Euler(0f, towardsY, 0f), Time.deltaTime * 10f);
+        playerModel.transform.rotation = Quaternion.Lerp(playerModel.transform.rotation, Quaternion.Euler(0f, towardsY, 0f), Time.deltaTime * 10f);
 
         //Springen:
-        if (Input.GetAxisRaw("Jump") > 0f && jumpCounter > 0)
+        if (Input.GetKeyDown(KeyCode.Space) && jumpCounter > 0)
         {
             Vector2 JumpPower = RB.velocity;
             JumpPower.y = JumpForce;
             RB.velocity = JumpPower;
+            Debug.Log("Jump");
             jumpCounter--;
         }
 
@@ -56,19 +57,19 @@ public class PlayerController : MonoBehaviour
     }
 
     //Groundcheck:
-    //void GroundCheck()
-    //{
-    //    Collider2D checkBox = Physics2D.OverlapBox(FeetTrans.position, CheckBox, 1, GroundLayer);
-    //    if (checkBox)
-    //    {
-    //        jumpCounter = MaxJumps;
-    //    }
-    //}
+    void GroundCheck()
+    {
+        Collider2D checkBox = Physics2D.OverlapBox(FeetTrans.position, CheckBox, 1, GroundLayer);
+        if (checkBox)
+        {
+            jumpCounter = MaxJumps;
+        }
+    }
 
     //GroundcheckBox:
-    //private void OnDrawGizmos()
-    //{
-    //    Gizmos.color = Color.red;
-    //    Gizmos.DrawWireCube(FeetTrans.position, CheckBox);
-    //}
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireCube(FeetTrans.position, CheckBox);
+    }
 }

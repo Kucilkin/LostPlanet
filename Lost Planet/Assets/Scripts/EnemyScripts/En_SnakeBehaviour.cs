@@ -23,7 +23,7 @@ public class En_SnakeBehaviour : EnemyBase
         moveDir = Vector2.left;
         rb = gameObject.GetComponent<Rigidbody2D>();
     }
-    
+
     private void FixedUpdate()
     {
         Movement();
@@ -40,13 +40,13 @@ public class En_SnakeBehaviour : EnemyBase
         Collider2D groundBox = Physics2D.OverlapBox(GroundBox.position, BoxDimG, 1, GroundLayer);
         Collider2D wallBox = Physics2D.OverlapBox(WallBox.position, BoxDimW, 1, GroundLayer);
 
-        if (objectFlip == true)
+        //if (objectFlip == true)
             //gameObject.transform.rotation.y
 
 
 
-        if (groundBox == false || wallBox == true)
-            gameObject.transform.rotation.y += 180;
+       //    if (groundBox == false || wallBox == true)
+       //    gameObject.transform.rotation.y += 180;
     }
 
 
