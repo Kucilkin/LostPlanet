@@ -379,9 +379,29 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 191874103857610824, guid: 810e1b10f9438264b8fcc81a520ec8e1, type: 3}
+      propertyPath: MaxJumps
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 191874103857610824, guid: 810e1b10f9438264b8fcc81a520ec8e1, type: 3}
+      propertyPath: JumpForce
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 191874103857610824, guid: 810e1b10f9438264b8fcc81a520ec8e1, type: 3}
+      propertyPath: CheckBox.y
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 2714875134902860664, guid: 810e1b10f9438264b8fcc81a520ec8e1, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 4073361744043797100, guid: 810e1b10f9438264b8fcc81a520ec8e1, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6410467793603051698, guid: 810e1b10f9438264b8fcc81a520ec8e1, type: 3}
+      propertyPath: m_GravityScale
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7931912904577530088, guid: 810e1b10f9438264b8fcc81a520ec8e1, type: 3}
       propertyPath: m_RootOrder
