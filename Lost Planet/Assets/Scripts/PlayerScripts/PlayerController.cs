@@ -19,6 +19,11 @@ public class PlayerController : MonoBehaviour
     public LayerMask GroundLayer;
     public Vector2 CheckBox; 
     public Transform FeetTrans;
+    //Dash:
+    public float dashDistance = 15f;
+    bool isDashing;
+    float doubleTaptime;
+    KeyCode lastKeyCode;
 
     void Start()
     {
@@ -48,11 +53,40 @@ public class PlayerController : MonoBehaviour
             jumpCounter--;
         }
 
+        //Dash Left:
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            if (doubleTaptime > Time.time && lastKeyCode == KeyCode.A)
+            {
+                StartCoroutine(Dash(-1f));
+            }
+            else
+            {
+                doubleTaptime = Time.time + 0.5f;
+            }
+
+            lastKeyCode = KeyCode.A;
+        }
+
+        //Dash Right:
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            if (doubleTaptime > Time.time && lastKeyCode == KeyCode.D)
+            {
+                StartCoroutine(Dash(1f));
+            }
+            else
+            {
+                doubleTaptime = Time.time + 0.5f;
+            }
+
+            lastKeyCode = KeyCode.D;
+        }
     }
 
     private void FixedUpdate()
     {
-        if(xInput != 0)
+        if(xInput != 0 && !isDashing)
         RB.velocity = new Vector2(xInput * Speed, RB.velocity.y); //Vorfärtsbewegung
     }
 
@@ -71,5 +105,18 @@ public class PlayerController : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireCube(FeetTrans.position, CheckBox);
+    }
+
+    //Dash:
+    IEnumerator Dash(float direction)
+    {
+        isDashing = true;
+        RB.velocity = new Vector2(RB.velocity.x, 0f);
+        RB.AddForce(new Vector2(dashDistance * direction, 0f), ForceMode2D.Impulse);
+        float gravity = RB.gravityScale;
+        RB.gravityScale = 0; //gravity auf 0
+        yield return new WaitForSeconds(0.4f);
+        isDashing = false;
+        RB.gravityScale = gravity; //gravity normal
     }
 }
