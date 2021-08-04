@@ -97,7 +97,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 218e624693857c34db4af1791feeebd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 0
   moveSpeed: 0
+  SnakeSprite: {fileID: 0}
+  GroundLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  BoxDimG: {x: 0, y: 0}
+  BoxDimW: {x: 0, y: 0}
+  GroundBox: {fileID: 0}
+  WallBox: {fileID: 0}
 --- !u!60 &3932681034623945325
 PolygonCollider2D:
   m_ObjectHideFlags: 0
