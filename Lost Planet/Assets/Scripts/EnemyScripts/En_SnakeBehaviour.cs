@@ -6,9 +6,7 @@ public class En_SnakeBehaviour : EnemyBase
 {
     //Members for movement
     private Rigidbody2D rb;     //Rigidbody reference
-    private Vector2 moveDir;    //Movement Direction
-    [SerializeField]
-    private float impulseStr;   //Strength of initial movement impulse
+    private Vector2 moveDir;    //Movement Direction 
 
     //Members for object turning
     private bool objectFlip;    //Bool Value for object flip
