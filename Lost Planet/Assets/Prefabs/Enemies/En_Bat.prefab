@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1021403385440810051}
   - component: {fileID: 1021403385440810050}
   - component: {fileID: 1021403385440810049}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: En_Bat
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -112,8 +112,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 5
-  moveSpeed: 3
-  player: {fileID: 6907264315736388075, guid: 21c5db9aa45e5704580561d6f1bbed52, type: 3}
+  moveSpeed: 1.5
+  impulseStr: 0.1
+  player: {fileID: 7931912904577530088, guid: 810e1b10f9438264b8fcc81a520ec8e1, type: 3}
+  impulseDelay: 1
 --- !u!61 &1021403385440810050
 BoxCollider2D:
   m_ObjectHideFlags: 0

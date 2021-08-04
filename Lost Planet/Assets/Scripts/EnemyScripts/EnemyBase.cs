@@ -7,6 +7,7 @@ public class EnemyBase : MonoBehaviour
     [SerializeField]
     private float damage;       //The Damage the enemy deals through contact
     public float moveSpeed;     //The movement speed of the enemy
+    public float impulseStr;
 
     public float Damage { get { return damage; } }  //Getter for the damage value
     /// <summary>
