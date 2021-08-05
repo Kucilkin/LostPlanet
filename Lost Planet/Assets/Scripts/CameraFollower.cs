@@ -5,10 +5,10 @@ using UnityEngine;
 public class CameraFollower : MonoBehaviour
 {
     public Transform Player;
-    public Vector3 offset = new Vector3(5.5f, 0, -10);
+    public Vector3 offset;
 
     private void LateUpdate()
     {
-        transform.position = Player.position + offset;
+        transform.position = new Vector3(Player.position.x, transform.position.y, 0) + offset;
     }
 }

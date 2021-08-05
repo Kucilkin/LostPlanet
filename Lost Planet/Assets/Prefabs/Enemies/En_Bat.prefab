@@ -113,7 +113,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 5
   moveSpeed: 1.5
-  impulseStr: 0.1
+  impulseStr: 0.05
   player: {fileID: 7931912904577530088, guid: 810e1b10f9438264b8fcc81a520ec8e1, type: 3}
   impulseDelay: 1
 --- !u!61 &1021403385440810050
