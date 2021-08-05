@@ -8,29 +8,30 @@ public class En_BatBehaviour : EnemyBase
     [SerializeField]
     private Transform player;
     private Vector2 targetDir;
-    //public bool aggro;
+    [SerializeField]
+    private float impulseDelay;
 
     private void Awake()
     {
-       //ggro = false;
         rb = gameObject.GetComponent<Rigidbody2D>();    //Securing a Rigidbody reference for movement method
         player = FindObjectOfType<PlayerController>().transform;
-        targetDir = player.position - transform.position;
     }
     private void FixedUpdate()
     {
-        if (targetDir.magnitude <= 15)
+        targetDir = player.position - transform.position;
+        if (targetDir.magnitude <= 10)
             StartCoroutine("BatMovement");
-
-        //if (aggro == true)
     }
 
     private IEnumerator BatMovement()
     {
-        rb.AddForce(-transform.up * moveSpeed, ForceMode2D.Impulse);
-        yield return new WaitForSeconds(1.5f);
+        rb.AddForce(-transform.up * impulseStr, ForceMode2D.Impulse);
+        yield return new WaitForSeconds(impulseDelay);
+        rb.AddForce(transform.up * impulseStr, ForceMode2D.Impulse);
+        //rb.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+        yield return new WaitForSeconds(impulseDelay);
+        rb.AddForce(targetDir.normalized * impulseStr, ForceMode2D.Impulse);
         rb.AddForce(targetDir.normalized * moveSpeed, ForceMode2D.Force);
-
     }
 
 }
