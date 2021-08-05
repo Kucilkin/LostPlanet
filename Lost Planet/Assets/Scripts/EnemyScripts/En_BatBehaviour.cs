@@ -27,6 +27,10 @@ public class En_BatBehaviour : EnemyBase
     {
         rb.AddForce(-transform.up * impulseStr, ForceMode2D.Impulse);
         yield return new WaitForSeconds(impulseDelay);
+        rb.AddForce(transform.up * impulseStr, ForceMode2D.Impulse);
+        //rb.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+        yield return new WaitForSeconds(impulseDelay);
+        rb.AddForce(targetDir.normalized * impulseStr, ForceMode2D.Impulse);
         rb.AddForce(targetDir.normalized * moveSpeed, ForceMode2D.Force);
     }
 
