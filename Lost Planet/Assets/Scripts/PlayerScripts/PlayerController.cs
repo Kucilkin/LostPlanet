@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
     float doubleTaptime;
     KeyCode lastKeyCode;
     //Flip:
-    bool facingRight = false;
+    public bool FacingRight = false;
 
     void Start()
     {
