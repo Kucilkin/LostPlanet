@@ -26,6 +26,11 @@ public class UIManagerScript : MonoBehaviour
         PauseGame();    //Constantly check if escape got pressed
     }
 
+    public void LoadDesiredScene(int _sceneIdx)
+    {
+        SceneManager.LoadScene(_sceneIdx);
+    }
+
     /// <summary>
     /// Pauses the game when Escape is pressed and stops time
     /// </summary>
