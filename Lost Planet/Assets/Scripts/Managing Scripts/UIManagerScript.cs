@@ -7,11 +7,11 @@ using UnityEngine.UI;
 public class UIManagerScript : MonoBehaviour
 {
     private bool paused;
-    private float gameOverDelay = 1.5f;
+    [SerializeField]
+    private float gameOverDelay;
     public GameObject PauseMenu;
     public GameObject GameOverScreen;
-    public GameObject WaveManager;
-    public GameObject Player;
+    //public GameObject Player;
     public GameObject BGM;
 
     void Start()
@@ -27,7 +27,7 @@ public class UIManagerScript : MonoBehaviour
     }
 
     /// <summary>
-    /// Pauses the game when Escape is pressed and stops times
+    /// Pauses the game when Escape is pressed and stops time
     /// </summary>
     private void PauseGame()
     {
@@ -81,8 +81,7 @@ public class UIManagerScript : MonoBehaviour
     /// <returns></returns>
     private IEnumerator C_GameOverRoutine()
     {
-        Destroy(Player);
-        Destroy(WaveManager);
+        //Destroy(Player);
         Destroy(BGM);
         yield return new WaitForSeconds(gameOverDelay); //wait for delay before showing game over screen
         GameOverScreen.SetActive(true); //Show the game over screen
