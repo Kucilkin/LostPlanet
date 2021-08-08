@@ -12,6 +12,7 @@ public class PlayerGun : MonoBehaviour
     private Transform gunPos;        //Variable for the "Gunbarrel"
     static private float damage = 1f;  //Damage Value of current weapon
 
+
     static public float Damage { get { return damage; } }
 
     void Start()
@@ -22,6 +23,10 @@ public class PlayerGun : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        //if (Player.GetComponent<PlayerController>().FacingRight == true)
+        //    ShotDir = new Vector3(1,0,0);
+        //else
+        //    ShotDir = -transform.right;
         Shoot();    //Should always be executed when Cooldown is over and Mouse 1 is pressed
     }
 

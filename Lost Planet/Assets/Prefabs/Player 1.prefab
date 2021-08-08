@@ -158,6 +158,7 @@ MonoBehaviour:
   CheckBox: {x: 0.9, y: 0.5}
   FeetTrans: {fileID: 3234610812568383521}
   dashDistance: 5
+  FacingRight: 0
 --- !u!114 &8569919119405017399
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -267,7 +268,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerProj: {fileID: 3108096188278396665, guid: c4a1e9ee159ed6f49a4ed9e33f27e1fc, type: 3}
+  Player: {fileID: 2714875134902860664}
   shotCooldown: 0.25
+  ShotDir: {x: 0, y: 0, z: 0}
 --- !u!1 &7994807457783253840
 GameObject:
   m_ObjectHideFlags: 0

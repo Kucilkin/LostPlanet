@@ -38,11 +38,11 @@ public class PlayerController : MonoBehaviour
 
         if (xInput < 0 && !FacingRight)
         {
-            flip();
+            Flip();
         }
         else if (xInput > 0 && FacingRight)
         {
-            flip();
+            Flip();
         }
 
         //Springen:
@@ -93,7 +93,7 @@ public class PlayerController : MonoBehaviour
     }
 
     //Drehen:
-    void flip()
+    void Flip()
     {
         FacingRight = !FacingRight;
         transform.Rotate(0, 180f, 0);
