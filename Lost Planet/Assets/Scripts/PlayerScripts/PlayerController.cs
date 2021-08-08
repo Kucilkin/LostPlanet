@@ -7,7 +7,6 @@ public class PlayerController : MonoBehaviour
     //Movement:
     public float Speed; // Playerspeed
     private float xInput; // Spielereingabe
-    private float towardsY = 0f; // Winkel zu dem dem sich der PLayer um eigene Achse dreht
     //Springen:
     public float JumpForce; //Sprungkraft
     public int MaxJumps; //maximale Sprünge
@@ -17,13 +16,15 @@ public class PlayerController : MonoBehaviour
     public GameObject playerModel;
     //Ground:
     public LayerMask GroundLayer;
-    public Vector2 CheckBox; 
+    public Vector2 CheckBox;
     public Transform FeetTrans;
     //Dash:
     public float dashDistance = 15f;
     bool isDashing;
     float doubleTaptime;
     KeyCode lastKeyCode;
+    //Flip:
+    bool facingRight = false;
 
     void Start()
     {
@@ -35,13 +36,14 @@ public class PlayerController : MonoBehaviour
         xInput = Input.GetAxisRaw("Horizontal"); //Eingabesignal fürs laufen
         GroundCheck(); // GroundCheck aufrufen
 
-        //Drehen:
-        if (xInput > 0f) // nach rechts gehen
-            towardsY = 0f;
-        else if (xInput < 0f) // nach links gehen
-            towardsY = 180f;
-
-        playerModel.transform.rotation = Quaternion.Lerp(playerModel.transform.rotation, Quaternion.Euler(0f, towardsY, 0f), Time.deltaTime * 10f);
+        if (xInput < 0 && !facingRight)
+        {
+            flip();
+        }
+        else if (xInput > 0 && facingRight)
+        {
+            flip();
+        }
 
         //Springen:
         if (Input.GetKeyDown(KeyCode.Space) && jumpCounter > 0)
@@ -86,8 +88,15 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(xInput != 0 && !isDashing)
-        RB.velocity = new Vector2(xInput * Speed, RB.velocity.y); //Vorfärtsbewegung
+        if (xInput != 0 && !isDashing)
+            RB.velocity = new Vector2(xInput * Speed, RB.velocity.y); //Vorfärtsbewegung
+    }
+
+    //Drehen:
+    void flip()
+    {
+        facingRight = !facingRight;
+        transform.Rotate(0, 180f, 0);
     }
 
     //Groundcheck:
