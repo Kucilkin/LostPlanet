@@ -36,13 +36,13 @@ public class PlayerController : MonoBehaviour
         xInput = Input.GetAxisRaw("Horizontal"); //Eingabesignal fürs laufen
         GroundCheck(); // GroundCheck aufrufen
 
-        if (xInput < 0 && !facingRight)
+        if (xInput < 0 && !FacingRight)
         {
-            flip();
+            Flip();
         }
-        else if (xInput > 0 && facingRight)
+        else if (xInput > 0 && FacingRight)
         {
-            flip();
+            Flip();
         }
 
         //Springen:
@@ -93,9 +93,9 @@ public class PlayerController : MonoBehaviour
     }
 
     //Drehen:
-    void flip()
+    void Flip()
     {
-        facingRight = !facingRight;
+        FacingRight = !FacingRight;
         transform.Rotate(0, 180f, 0);
     }
 
