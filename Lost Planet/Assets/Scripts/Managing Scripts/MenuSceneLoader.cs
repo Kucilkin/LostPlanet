@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class MenuSceneLoader : MonoBehaviour
 {
     /// <summary>
-    /// Load Level 1 when play button is pressed
+    /// Load Scene 1 when play button is pressed
     /// </summary>
     public void PlayGame()
     {
@@ -16,10 +16,10 @@ public class MenuSceneLoader : MonoBehaviour
     /// <summary>
     /// Load Credits scene when credits button is pressed
     /// </summary>
-    public void ShowCredits()
-    {
-        SceneManager.LoadScene(4);
-    }
+    //public void ShowCredits()
+    //{
+    //    SceneManager.LoadScene(4);
+    //}
 
     /// <summary>
     /// Close the game or end play mode depending on execution method when quit button is pressed
@@ -32,7 +32,9 @@ public class MenuSceneLoader : MonoBehaviour
         Application.Quit();
 #endif
     }
-
+    /// <summary>
+    /// Returns to the Main Menu Scene when this button is pressed.
+    /// </summary>
     public void BackToMenu()
     {
         SceneManager.LoadScene(0);

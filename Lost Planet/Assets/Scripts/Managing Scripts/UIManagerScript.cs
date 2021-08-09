@@ -6,13 +6,13 @@ using UnityEngine.UI;
 
 public class UIManagerScript : MonoBehaviour
 {
-    private bool paused;
+    private bool paused;    //bool value for pause state
     [SerializeField]
-    private float gameOverDelay;
-    public GameObject PauseMenu;
-    public GameObject GameOverScreen;
+    private float gameOverDelay;    //Delay before Game Over screen should be shown
+    public GameObject PauseMenu;    //Pause Menu Reference
+    public GameObject GameOverScreen;   //GameOverScreen Reference
     //public GameObject Player;
-    public GameObject BGM;
+    public GameObject BGM;      //Background Music Reference
 
     void Start()
     {
@@ -25,7 +25,10 @@ public class UIManagerScript : MonoBehaviour
     {
         PauseGame();    //Constantly check if escape got pressed
     }
-
+    /// <summary>
+    /// Loads the scene with given Index
+    /// </summary>
+    /// <param name="_sceneIdx">Build Index of desired scene to be switched to</param>
     public void LoadDesiredScene(int _sceneIdx)
     {
         SceneManager.LoadScene(_sceneIdx);
