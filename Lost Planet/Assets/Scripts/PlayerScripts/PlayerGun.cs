@@ -13,7 +13,7 @@ public class PlayerGun : MonoBehaviour
     static private float damage = 1f;  //Damage Value of current weapon
 
 
-    static public float Damage { get { return damage; } }
+    static public float Damage { get { return damage; } }   //Getter for damage value
 
     void Start()
     {
