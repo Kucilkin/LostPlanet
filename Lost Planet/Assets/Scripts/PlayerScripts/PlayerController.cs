@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
     float doubleTaptime;
     KeyCode lastKeyCode;
     //Flip:
-    public bool FacingRight = false;
+    public bool FacingLeft;
 
     void Start()
     {
@@ -36,11 +36,11 @@ public class PlayerController : MonoBehaviour
         xInput = Input.GetAxisRaw("Horizontal"); //Eingabesignal fürs laufen
         GroundCheck(); // GroundCheck aufrufen
 
-        if (xInput < 0 && !FacingRight)
+        if (xInput < 0 && !FacingLeft)
         {
             Flip();
         }
-        else if (xInput > 0 && FacingRight)
+        else if (xInput > 0 && FacingLeft)
         {
             Flip();
         }
@@ -95,7 +95,7 @@ public class PlayerController : MonoBehaviour
     //Drehen:
     void Flip()
     {
-        FacingRight = !FacingRight;
+        FacingLeft = !FacingLeft;
         transform.Rotate(0, 180f, 0);
     }
 

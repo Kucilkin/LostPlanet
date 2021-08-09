@@ -37,10 +37,10 @@ public class PlayerProjBehaviour : MonoBehaviour
     public void Bulletpattern()
     {
         //Player.GetComponentInChildren<PlayerGun>().ShotDir
-        if (Player.GetComponent<PlayerController>().FacingRight == true)
-            transform.position += transform.right * projVelocity * Time.deltaTime; //Make the bullet move upwards multiplied by our speed per second
-        else if (Player.GetComponent<PlayerController>().FacingRight == false)
-            transform.position += (transform.right * -1) * projVelocity * Time.deltaTime; //Make the bullet move upwards multiplied by our speed per second
+        if (Player.GetComponent<PlayerController>().FacingLeft == false)
+            transform.position += transform.right * projVelocity * Time.deltaTime; //Make the bullet move right multiplied by our speed per second
+        else if (Player.GetComponent<PlayerController>().FacingLeft == true)
+            transform.position += -transform.right * projVelocity * Time.deltaTime; //Make the bullet move left multiplied by our speed per second
 
     }
 }
