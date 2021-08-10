@@ -38,6 +38,7 @@ public class En_BatBehaviour : EnemyBase
         yield return new WaitForSeconds(impulseDelay);
         if (targetDir == default)
             targetDir = playerDetection;
+        Destroy(gameObject, 3);
 
         rb.AddForce(targetDir.normalized * impulseStr, ForceMode2D.Impulse);
         rb.AddForce(targetDir.normalized * moveSpeed, ForceMode2D.Force);
