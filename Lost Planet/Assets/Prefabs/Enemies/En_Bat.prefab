@@ -1,76 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1021403384916847325
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1021403384916847326}
-  - component: {fileID: 1021403384916847327}
-  - component: {fileID: 1021403384824072066}
-  m_Layer: 6
-  m_Name: AggroTrigger
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1021403384916847326
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1021403384916847325}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1021403385440810054}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &1021403384916847327
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1021403384916847325}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -3.8684902}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 16.5, y: 9}
-  m_EdgeRadius: 0
---- !u!114 &1021403384824072066
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1021403384916847325}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 108f9cdba9c0c8d4ca47e5b34b2f6fcc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Bat: {fileID: 1021403385440810048}
 --- !u!1 &1021403385440810048
 GameObject:
   m_ObjectHideFlags: 0
@@ -85,7 +14,7 @@ GameObject:
   - component: {fileID: 1021403385440810051}
   - component: {fileID: 1021403385440810050}
   - component: {fileID: 1021403385440810049}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: En_Bat
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -102,8 +31,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.2304685, y: 0.7281048, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1021403384916847326}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -184,9 +112,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 5
-  moveSpeed: 3
-  player: {fileID: 6907264315736388075, guid: 21c5db9aa45e5704580561d6f1bbed52, type: 3}
-  aggro: 0
+  moveSpeed: 20
+  impulseStr: 0.1
+  player: {fileID: 7931912904577530088, guid: 810e1b10f9438264b8fcc81a520ec8e1, type: 3}
+  impulseDelay: 0.5
 --- !u!61 &1021403385440810050
 BoxCollider2D:
   m_ObjectHideFlags: 0
