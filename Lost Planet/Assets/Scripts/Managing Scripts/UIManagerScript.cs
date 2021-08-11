@@ -35,6 +35,14 @@ public class UIManagerScript : MonoBehaviour
     }
 
     /// <summary>
+    /// Load Scene 1 when play button is pressed
+    /// </summary>
+    public void PlayGameBtn()
+    {
+        SceneManager.LoadScene(1);
+    }
+
+    /// <summary>
     /// Pauses the game when Escape is pressed and stops time
     /// </summary>
     private void PauseGame()
@@ -62,11 +70,19 @@ public class UIManagerScript : MonoBehaviour
     /// <summary>
     /// Quits the active scene and loads the main menu
     /// </summary>
-    public void QuitBtn()
+    public void QuitToMainMenuBtn()
     {
         SceneManager.LoadScene(0);
     }
 
+    public void QuitGameBtn()
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
+    }
     /// <summary>
     /// Loads active scene from beginning to retry the stage
     /// </summary>
