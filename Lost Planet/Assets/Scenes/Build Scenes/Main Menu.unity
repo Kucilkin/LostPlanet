@@ -490,8 +490,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1027819580}
-        m_TargetAssemblyTypeName: MenuSceneLoader, Assembly-CSharp
-        m_MethodName: PlayGame
+        m_TargetAssemblyTypeName: UIManagerScript, Assembly-CSharp
+        m_MethodName: PlayGameBtn
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -652,9 +652,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1027819575}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e445dc4c4de01340a1cad3a0904111a, type: 3}
+  m_Script: {fileID: 11500000, guid: 20200313f0cd0b6408f0e601b56ac930, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameOverDelay: 0
+  PauseMenu: {fileID: 0}
+  GameOverScreen: {fileID: 0}
+  BGM: {fileID: 0}
 --- !u!1 &1365430361
 GameObject:
   m_ObjectHideFlags: 0
@@ -1082,8 +1086,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1027819580}
-        m_TargetAssemblyTypeName: MenuSceneLoader, Assembly-CSharp
-        m_MethodName: QuitGame
+        m_TargetAssemblyTypeName: UIManagerScript, Assembly-CSharp
+        m_MethodName: QuitGameBtn
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

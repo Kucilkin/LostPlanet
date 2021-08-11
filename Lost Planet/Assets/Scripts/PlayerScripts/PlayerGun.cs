@@ -12,14 +12,12 @@ public class PlayerGun : MonoBehaviour
     private Transform gunPos;        //Variable for the "Gunbarrel"
     static private float damage = 1f;  //Damage Value of current weapon
 
-
     static public float Damage { get { return damage; } }   //Getter for damage value
 
     void Start()
     {
         gunPos = GetComponent<Transform>();     //Getting the position of the "Gunbarrel"
         shotCooldown = 0.25f;    //Defining initial delay between shots
-
     }
     private void FixedUpdate()
     {
