@@ -9,10 +9,11 @@ public class PlayerController : MonoBehaviour
     private float xInput; // Spielereingabe
     //Springen:
     public float JumpForce; //Sprungkraft
-    public int MaxJumps; //maximale Sprünge
-    private int jumpCounter; //Sprungzähler
+    public int MaxJumps; //maximale Spr?nge
+    private int jumpCounter; //Sprungz?hler
 
-    public Rigidbody2D RB;
+    private Animator anim;
+    private Rigidbody2D RB;
     public GameObject playerModel;
     //Ground:
     public LayerMask GroundLayer;
@@ -24,25 +25,26 @@ public class PlayerController : MonoBehaviour
     float doubleTaptime;
     KeyCode lastKeyCode;
     //Flip:
-    public bool FacingRight = false;
+    public bool FacingLeft;
 
     void Start()
     {
         RB = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
     }
 
     void Update()
     {
-        xInput = Input.GetAxisRaw("Horizontal"); //Eingabesignal fürs laufen
+        xInput = Input.GetAxisRaw("Horizontal"); //Eingabesignal f?rs laufen
         GroundCheck(); // GroundCheck aufrufen
 
-        if (xInput < 0 && !FacingRight)
+        if (xInput < 0 && !FacingLeft)
         {
-            flip();
+            Flip();
         }
-        else if (xInput > 0 && FacingRight)
+        else if (xInput > 0 && FacingLeft)
         {
-            flip();
+            Flip();
         }
 
         //Springen:
@@ -83,19 +85,22 @@ public class PlayerController : MonoBehaviour
             }
 
             lastKeyCode = KeyCode.D;
+
+            
         }
+        Animations();
     }
 
     private void FixedUpdate()
     {
         if (xInput != 0 && !isDashing)
-            RB.velocity = new Vector2(xInput * Speed, RB.velocity.y); //Vorfärtsbewegung
+            RB.velocity = new Vector2(xInput * Speed, RB.velocity.y); //Vorf?rtsbewegung
     }
 
     //Drehen:
-    void flip()
+    void Flip()
     {
-        FacingRight = !FacingRight;
+        FacingLeft = !FacingLeft;
         transform.Rotate(0, 180f, 0);
     }
 
@@ -106,6 +111,7 @@ public class PlayerController : MonoBehaviour
         if (checkBox)
         {
             jumpCounter = MaxJumps;
+            Debug.Log("Groundcheck");
         }
     }
 
@@ -127,5 +133,11 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(0.4f);
         isDashing = false;
         RB.gravityScale = gravity; //gravity normal
+    }
+
+    void Animations()
+    {
+        anim.SetFloat("xInputAbs", Mathf.Abs(xInput));
+        anim.SetFloat("yVelocity", RB.velocity.y);
     }
 }
