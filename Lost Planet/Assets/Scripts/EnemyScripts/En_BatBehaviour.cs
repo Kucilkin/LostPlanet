@@ -8,6 +8,9 @@ public class En_BatBehaviour : EnemyBase
     [SerializeField]
     private Transform player;       //Player Position
 
+    [SerializeField]
+    private Animator animFlying;
+
     private Vector2 playerDetection;    //A Vector to determine the distance from Bat to Player
     public float PlayerDetectionRange;
     private Vector2 targetDir;  //Position the Bat charges at
@@ -34,6 +37,7 @@ public class En_BatBehaviour : EnemyBase
 
         rb.AddForce(-transform.up * impulseStr, ForceMode2D.Impulse);   //First, move down from the ceiling where the Bat is located
         yield return new WaitForSeconds(impulseDelay / 2);      //Wait before next Move (Divided by 2 just to make it shorter than the next Move)
+        animFlying.SetBool("OnAggro", true);
         rb.AddForce(transform.up * impulseStr, ForceMode2D.Impulse);    //Try to counteract the momentum from the initial push
         //rb.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
         yield return new WaitForSeconds(impulseDelay);
