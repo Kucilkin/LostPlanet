@@ -9,6 +9,7 @@ public class En_BatBehaviour : EnemyBase
     private Transform player;       //Player Position
 
     private Vector2 playerDetection;    //A Vector to determine the distance from Bat to Player
+    public float PlayerDetectionRange;
     private Vector2 targetDir;  //Position the Bat charges at
     [SerializeField]
     private float impulseDelay; //Duration between movement "impulses"
@@ -21,7 +22,7 @@ public class En_BatBehaviour : EnemyBase
     private void FixedUpdate()
     {
         playerDetection = player.position - transform.position; //Constantly draws a Vector bewtween own and the player's Position
-        if (playerDetection.magnitude <= 10)    //As soon as player's distance to Bat is below 10 -> Enable Movement
+        if (playerDetection.magnitude <= PlayerDetectionRange)    //As soon as player's distance to Bat is below 10 -> Enable Movement
             StartCoroutine("BatMovement");
     }
     /// <summary>

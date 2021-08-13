@@ -98,7 +98,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projVelocity: 7
-  Player: {fileID: 2714875134902860664, guid: 810e1b10f9438264b8fcc81a520ec8e1, type: 3}
+  Player: {fileID: 5569026661135003305, guid: 2d0807421fe5a144db2ea6757a135366, type: 3}
+  ShotDir: {x: 0, y: 0, z: 0}
+  DespawnTimer: 3
 --- !u!50 &3285133933288096963
 Rigidbody2D:
   serializedVersion: 4
