@@ -125988,6 +125988,18 @@ PrefabInstance:
       propertyPath: Player
       value: 
       objectReference: {fileID: 708987293}
+    - target: {fileID: 5007547405712363725, guid: 751418dca7a7cda4f84134b43f606a86, type: 3}
+      propertyPath: offset.x
+      value: 5.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5007547405712363725, guid: 751418dca7a7cda4f84134b43f606a86, type: 3}
+      propertyPath: snapToXAxis
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5007547405712363725, guid: 751418dca7a7cda4f84134b43f606a86, type: 3}
+      propertyPath: snapToYAxis
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5007547405712363727, guid: 751418dca7a7cda4f84134b43f606a86, type: 3}
       propertyPath: orthographic size
       value: 10
