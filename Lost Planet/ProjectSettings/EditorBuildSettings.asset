@@ -14,4 +14,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Build Scenes/Tutorial.unity
     guid: 2df77922caece374cb668e1f83b5ef16
+  - enabled: 1
+    path: Assets/Scenes/Build Scenes/CaveLevel.unity
+    guid: dd3523d9e824c82459c0488cf9622b5b
+  - enabled: 1
+    path: Assets/Scenes/Build Scenes/TowerLevel.unity
+    guid: d6bf622929c174347b3dbedca3510801
   m_configObjects: {}
