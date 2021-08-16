@@ -86,7 +86,7 @@ public class PlayerController : MonoBehaviour
 
             lastKeyCode = KeyCode.D;
 
-            
+
         }
         Animations();
     }
@@ -139,5 +139,8 @@ public class PlayerController : MonoBehaviour
     {
         anim.SetFloat("xInputAbs", Mathf.Abs(xInput));
         anim.SetFloat("yVelocity", RB.velocity.y);
+        if (RB.velocity.y < .1f)
+            anim.SetFloat("-yVelocity", RB.velocity.y);
+
     }
 }
