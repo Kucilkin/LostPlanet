@@ -15,12 +15,16 @@ public class PlayerProjBehaviour : MonoBehaviour
 
     void Start()
     {
-        FacingLeftPR = Player.GetComponent<PlayerController>().FacingLeft;
+        //ShotDir = Player.transform.right;
 
-        if (FacingLeftPR == true)
-            ShotDir = -transform.right;
-        if (FacingLeftPR == false)
-            ShotDir = transform.right;
+
+
+        //FacingLeftPR = Player.GetComponent<PlayerController>().FacingLeft;
+        //Debug.Log("Is Player facing left: " + FacingLeftPR);
+        //if (FacingLeftPR == true)
+        //    ShotDir = -transform.right;
+        //if (FacingLeftPR == false)
+        //    ShotDir = transform.right;
 
         //if (Player.GetComponent<PlayerController>().FacingLeft == false)
         //    ShotDir = new Vector3(1, 0, 0);
@@ -55,6 +59,7 @@ public class PlayerProjBehaviour : MonoBehaviour
 
     public void Bulletpattern()
     {
+        Debug.Log("Shot Direction: " + ShotDir);
         transform.position += ShotDir * projVelocity * Time.deltaTime;
 
         //if (FacingLeftPR == true)

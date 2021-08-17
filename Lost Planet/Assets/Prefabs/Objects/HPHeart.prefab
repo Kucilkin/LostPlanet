@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 609129444848069491}
   - component: {fileID: 609129444848069488}
-  - component: {fileID: 609129444848069489}
   - component: {fileID: 609129444848069490}
+  - component: {fileID: 119368484}
   m_Layer: 10
   m_Name: HPHeart
   m_TagString: HPHeart
@@ -84,19 +84,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!65 &609129444848069489
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 609129444848069502}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 2.0928643, y: 1.870784, z: 0.20928644}
-  m_Center: {x: 0, y: 0.18707812, z: 0}
 --- !u!114 &609129444848069490
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -110,4 +97,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UIManager: {fileID: 0}
-  PlayerHP: {fileID: 5569026661135003305, guid: 2d0807421fe5a144db2ea6757a135366, type: 3}
+  PlayerHP: {fileID: 0}
+  NextSceneIDX: 0
+--- !u!61 &119368484
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 609129444848069502}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.09335899}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2, y: 2}
+    newSize: {x: 2, y: 2}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 2, y: 1.813282}
+  m_EdgeRadius: 0
