@@ -34,8 +34,11 @@ public class PlayerGun : MonoBehaviour
         if (currentCooldown <= 0)       //If the shot cooldown is 0 seconds or below -> be able to shoot 
         {
             if (Input.GetButton("Fire1"))    //Spawn a player projectile when Mouse 1 is pressed
-                Instantiate(PlayerProj, gunPos.position, Quaternion.identity);
-            currentCooldown = shotCooldown;     //Reset the shot cooldown after each shot
+            {
+                PlayerProjBehaviour proj = Instantiate(PlayerProj, gunPos.position, Quaternion.identity).GetComponent<PlayerProjBehaviour>();
+                proj.ShotDir = transform.right;
+                currentCooldown = shotCooldown;     //Reset the shot cooldown after each shot
+            }
         }
         else
             currentCooldown -= Time.deltaTime;  //If current cooldown is < 0 -> decrease by 1 second real time
