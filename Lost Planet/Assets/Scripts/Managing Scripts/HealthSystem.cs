@@ -8,6 +8,7 @@ public class HealthSystem : MonoBehaviour
     public float MaxHP;    //Maximum HP  
     public float CurrHP;   //Current HP
     public GameObject HealthBar;    //HealthBar reference (only relevant for the Player)
+    public GameObject UIManager;
 
     private void Start()
     {
@@ -33,5 +34,8 @@ public class HealthSystem : MonoBehaviour
     public void Die()
     {
         Destroy(gameObject);
+        if (this.gameObject.tag == "Player")
+            UIManager.GetComponent<UIManagerScript>().GameOver();
+
     }
 }
