@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52691f66d6c83ef42b782476239bb789, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projVelocity: 7
+  projVelocity: 10
   Player: {fileID: 5569026661135003305, guid: 2d0807421fe5a144db2ea6757a135366, type: 3}
   ShotDir: {x: 0, y: 0, z: 0}
   DespawnTimer: 3
