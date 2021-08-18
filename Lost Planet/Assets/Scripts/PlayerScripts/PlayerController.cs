@@ -111,7 +111,7 @@ public class PlayerController : MonoBehaviour
     //Groundcheck:
     void GroundCheck()
     {
-        
+
         Collider2D checkBox = Physics2D.OverlapBox(FeetTrans.position, CheckBox, 1, GroundLayer);
         if (checkBox)
         {
@@ -144,8 +144,11 @@ public class PlayerController : MonoBehaviour
     {
         anim.SetFloat("xInputAbs", Mathf.Abs(xInput));
         anim.SetFloat("yVelocity", RB.velocity.y);
-        if (RB.velocity.y < .1f)
-            anim.SetFloat("-yVelocity", RB.velocity.y);
+    }
 
+    void GravityReset()
+    {
+        if (Input.GetKeyDown(KeyCode.G))
+            RB.gravityScale = 5;
     }
 }

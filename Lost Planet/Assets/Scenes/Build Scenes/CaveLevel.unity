@@ -39564,6 +39564,10 @@ PrefabInstance:
       propertyPath: UIManager
       value: 
       objectReference: {fileID: 657438279}
+    - target: {fileID: 4902064661606426096, guid: 2d0807421fe5a144db2ea6757a135366, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.206
+      objectReference: {fileID: 0}
     - target: {fileID: 5163909202774991327, guid: 2d0807421fe5a144db2ea6757a135366, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
@@ -39583,6 +39587,14 @@ PrefabInstance:
     - target: {fileID: 7659964118355072409, guid: 2d0807421fe5a144db2ea6757a135366, type: 3}
       propertyPath: MaxJumps
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7659964118355072409, guid: 2d0807421fe5a144db2ea6757a135366, type: 3}
+      propertyPath: CheckBox.x
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7659964118355072409, guid: 2d0807421fe5a144db2ea6757a135366, type: 3}
+      propertyPath: dashDistance
+      value: 17
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2d0807421fe5a144db2ea6757a135366, type: 3}
