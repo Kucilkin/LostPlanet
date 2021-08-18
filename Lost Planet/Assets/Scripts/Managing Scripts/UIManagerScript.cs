@@ -13,6 +13,7 @@ public class UIManagerScript : MonoBehaviour
     public GameObject GameOverScreen;   //GameOverScreen Reference
     //public GameObject Player;
     public GameObject BGM;      //Background Music Reference
+    public AudioSource DeathCry;
 
     void Start()
     {
@@ -107,6 +108,7 @@ public class UIManagerScript : MonoBehaviour
     {
         //Destroy(Player);
         Destroy(BGM);
+        DeathCry.Play();
         yield return new WaitForSeconds(gameOverDelay); //wait for delay before showing game over screen
         GameOverScreen.SetActive(true); //Show the game over screen
     }
