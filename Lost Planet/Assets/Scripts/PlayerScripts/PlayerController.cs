@@ -29,6 +29,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        jumpCounter = MaxJumps;
         RB = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
     }
@@ -36,7 +37,9 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         xInput = Input.GetAxisRaw("Horizontal"); //Eingabesignal f?rs laufen
-        GroundCheck(); // GroundCheck aufrufen
+
+        if (RB.velocity.y <= 0)
+            GroundCheck(); // GroundCheck aufrufen
 
         if (xInput < 0 && !FacingLeft)
         {
@@ -55,6 +58,7 @@ public class PlayerController : MonoBehaviour
             RB.velocity = JumpPower;
             Debug.Log("Jump");
             jumpCounter--;
+            Debug.Log("JumpCounter: " + jumpCounter);
         }
 
         //Dash Left:
@@ -93,7 +97,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (xInput != 0 && !isDashing)
+        if (!isDashing)
             RB.velocity = new Vector2(xInput * Speed, RB.velocity.y); //Vorf?rtsbewegung
     }
 
@@ -107,6 +111,7 @@ public class PlayerController : MonoBehaviour
     //Groundcheck:
     void GroundCheck()
     {
+        
         Collider2D checkBox = Physics2D.OverlapBox(FeetTrans.position, CheckBox, 1, GroundLayer);
         if (checkBox)
         {
