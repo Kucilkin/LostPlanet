@@ -10,15 +10,14 @@ public class PlayerProjBehaviour : MonoBehaviour
     public Vector3 ShotDir;
     public float DespawnTimer;
 
-    public bool FacingLeftPR;
-    private float xInputPR;
+    //public bool FacingLeftPR;
 
     void Start()
     {
+        Destroy(gameObject, DespawnTimer);  //Destroy the bullet after 1.5 seconds of not hitting anything
+
+
         //ShotDir = Player.transform.right;
-
-
-
         //FacingLeftPR = Player.GetComponent<PlayerController>().FacingLeft;
         //Debug.Log("Is Player facing left: " + FacingLeftPR);
         //if (FacingLeftPR == true)
@@ -30,11 +29,12 @@ public class PlayerProjBehaviour : MonoBehaviour
         //    ShotDir = new Vector3(1, 0, 0);
         //else if (Player.GetComponent<PlayerController>().FacingLeft == true)
         //    ShotDir = new Vector3(-1, 0, 0);
-        Destroy(gameObject, DespawnTimer);  //Destroy the bullet after 1.5 seconds of not hitting anything
     }
 
     void Update()
     {
+        Bulletpattern();
+
         //xInputPR = Input.GetAxisRaw("Horizontal");
 
         //if (xInputPR < 0 && !FacingLeftPR)
@@ -45,7 +45,6 @@ public class PlayerProjBehaviour : MonoBehaviour
         //{
         //    FacingLeftPR = !FacingLeftPR;
         //}
-        Bulletpattern();
     }
 
     public void OnTriggerEnter2D(Collider2D collision)
@@ -55,6 +54,8 @@ public class PlayerProjBehaviour : MonoBehaviour
             collision.gameObject.GetComponent<HealthSystem>().GetDamaged(PlayerGun.Damage);
             Destroy(gameObject);
         }
+        else
+            Destroy(gameObject);
     }
 
     public void Bulletpattern()
