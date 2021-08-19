@@ -10,13 +10,20 @@ public class HealthSystem : MonoBehaviour
     public float MaxHP;    //Maximum HP  
     public float CurrHP;   //Current HP
 
+    public bool LocatedOnPlayer;
+
     public GameObject HealthBar;    //HealthBar reference (only relevant for the Player)
     public GameObject UIManager;    //UIManager reference (relevant for calling Game Over)
+
+    private bool IsInvincible;
+    [SerializeField]
+    private float invincibilityTimer;
+    public Animator AnimIFrames;
 
     private void Start()
     {
         CurrHP = MaxHP;
-        if (this.gameObject.tag == "Player")    //If this script is located on the Player, modify the HealthBar's Value
+        if (LocatedOnPlayer == true)    //If this script is located on the Player, modify the HealthBar's Value
             HealthBar.GetComponent<HealthBar>().SetMaxHealth(MaxHP);
     }
     /// <summary>
@@ -25,9 +32,14 @@ public class HealthSystem : MonoBehaviour
     /// <param name="_damage">The value the HP should be reduced by</param>
     public void GetDamaged(float _damage)
     {
+        if (IsInvincible == true)
+            return;
         CurrHP -= _damage;
-        if (this.gameObject.tag == "Player")    //if this script is located on the Player, update the health bar
+        if (LocatedOnPlayer == true)    //if this script is located on the Player, update the health bar
+        {
             HealthBar.GetComponent<HealthBar>().UpdateHealth(CurrHP);
+            StartCoroutine("InvincibilityRoutine");
+        }
         if (CurrHP <= 0)
             Die();
     }
@@ -37,7 +49,16 @@ public class HealthSystem : MonoBehaviour
     public void Die()
     {
         Destroy(gameObject);
-        if (this.gameObject.tag == "Player")
+        if (LocatedOnPlayer == true)
             UIManager.GetComponent<UIManagerScript>().GameOver();   //If the Player dies, call Game Over routine in UIManager
+    }
+
+    public IEnumerator InvincibilityRoutine()
+    {
+        IsInvincible = true;
+        AnimIFrames.SetBool("IFramesActive", true);
+        yield return new WaitForSeconds(invincibilityTimer);
+        AnimIFrames.SetBool("IFramesActive", false);
+        IsInvincible = false;
     }
 }

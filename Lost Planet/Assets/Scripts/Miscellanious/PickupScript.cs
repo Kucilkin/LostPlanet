@@ -22,15 +22,15 @@ public class PickupScript : MonoBehaviour
 
             if (gameObject.tag == "HPHeart")
             {
-                float maxPlayerHP = PlayerHP.GetComponent<HealthSystem>().MaxHP;    //Max HP value of Player
-                float currPlayerHP = PlayerHP.GetComponent<HealthSystem>().CurrHP;  //Current HP value of Player
+                //float maxPlayerHP = PlayerHP.GetComponent<HealthSystem>().MaxHP;    //Max HP value of Player
+                //float currPlayerHP = PlayerHP.GetComponent<HealthSystem>().CurrHP;  //Current HP value of Player
                 PlayerHP.GetComponent<HealthSystem>().CurrHP += 30f;        //If the player collides with a Heart, replenish HP by 30
 
-                if (currPlayerHP > maxPlayerHP)
-                    currPlayerHP = maxPlayerHP;     //However, if the current HP exceed max HP, set current HP to max HP
+                if (PlayerHP.GetComponent<HealthSystem>().CurrHP > PlayerHP.GetComponent<HealthSystem>().MaxHP)
+                    PlayerHP.GetComponent<HealthSystem>().CurrHP = PlayerHP.GetComponent<HealthSystem>().MaxHP;     //However, if the current HP exceed max HP, set current HP to max HP
 
-                HealthBarRef.GetComponent<HealthBar>().UpdateHealth(currPlayerHP);  //When HP is replenished, update the health bar to current HP
-                Debug.Log("30 HP replenished! Current HP: " + currPlayerHP);
+                HealthBarRef.GetComponent<HealthBar>().UpdateHealth(PlayerHP.GetComponent<HealthSystem>().CurrHP);  //When HP is replenished, update the health bar to current HP
+                Debug.Log("30 HP replenished! Current HP: " + PlayerHP.GetComponent<HealthSystem>().CurrHP);
                 Destroy(gameObject);    //Destroy the heart object
             }
         }
