@@ -154,7 +154,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHP: 3
   CurrHP: 0
+  LocatedOnPlayer: 0
   HealthBar: {fileID: 0}
+  UIManager: {fileID: 0}
+  invincibilityTimer: 0
+  AnimIFrames: {fileID: 0}
 --- !u!60 &3932681034623945325
 PolygonCollider2D:
   m_ObjectHideFlags: 0
