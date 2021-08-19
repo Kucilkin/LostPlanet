@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class HealthSystem : MonoBehaviour
 {
+    //Kevin's script
+
     [SerializeField]
     public float MaxHP;    //Maximum HP  
     public float CurrHP;   //Current HP
+
     public GameObject HealthBar;    //HealthBar reference (only relevant for the Player)
-    public GameObject UIManager;
+    public GameObject UIManager;    //UIManager reference (relevant for calling Game Over)
 
     private void Start()
     {
@@ -35,7 +38,6 @@ public class HealthSystem : MonoBehaviour
     {
         Destroy(gameObject);
         if (this.gameObject.tag == "Player")
-            UIManager.GetComponent<UIManagerScript>().GameOver();
-
+            UIManager.GetComponent<UIManagerScript>().GameOver();   //If the Player dies, call Game Over routine in UIManager
     }
 }

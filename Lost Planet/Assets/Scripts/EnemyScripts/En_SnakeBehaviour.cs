@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class En_SnakeBehaviour : EnemyBase
 {
+    //Kevin's script
+
     //Members for movement
     private Rigidbody2D rb;     //Rigidbody reference
     private Vector2 moveDir;    //Movement Direction 
@@ -42,8 +44,6 @@ public class En_SnakeBehaviour : EnemyBase
     {
         Collider2D groundBox = Physics2D.OverlapBox(GroundBox.position, BoxDimG, 1, GroundLayer);   //Set up a Checkbox for Ground-collision-check
         Collider2D wallBox = Physics2D.OverlapBox(WallBox.position, BoxDimW, 1, GroundLayer);       //Set up a Checkbox for Wall-coliision-check
-
-
 
         if (groundBox == false || wallBox == true)  //As soon as either the groundbox doesn't touch the ground or the wallbox touches the ground: flip the bool value
         {

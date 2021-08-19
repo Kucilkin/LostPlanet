@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class En_BatBehaviour : EnemyBase
 {
+    //Kevin's script
+
     private Rigidbody2D rb;
     [SerializeField]
     private Transform player;       //Player Position
@@ -12,7 +14,7 @@ public class En_BatBehaviour : EnemyBase
     private Animator animFlying;
 
     private Vector2 playerDetection;    //A Vector to determine the distance from Bat to Player
-    public float PlayerDetectionRange;
+    public float PlayerDetectionRange;  //Range at which Bat's aggro will be triggered. Public so it can be configured individually for each bat if needed
     private Vector2 targetDir;  //Position the Bat charges at
     [SerializeField]
     private float impulseDelay; //Duration between movement "impulses"
@@ -37,16 +39,18 @@ public class En_BatBehaviour : EnemyBase
 
         rb.AddForce(-transform.up * impulseStr, ForceMode2D.Impulse);   //First, move down from the ceiling where the Bat is located
         yield return new WaitForSeconds(impulseDelay / 2);      //Wait before next Move (Divided by 2 just to make it shorter than the next Move)
-        animFlying.SetBool("OnAggro", true);
+        animFlying.SetBool("OnAggro", true);    //Trigger Flying animation
         rb.AddForce(transform.up * impulseStr, ForceMode2D.Impulse);    //Try to counteract the momentum from the initial push
         //rb.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
         yield return new WaitForSeconds(impulseDelay);
-        if (targetDir == default)
+        if (targetDir == default)   //targetDir should only be changed once at the beginning so it only charges at the player's position at this moment (so it doesn't relentlessly chase the player)
             targetDir = playerDetection;
-        Destroy(gameObject, 3);
+        if (targetDir.x > 0)
+            transform.rotation = Quaternion.Euler(0, 180, 0);
+        rb.AddForce(targetDir.normalized * impulseStr, ForceMode2D.Impulse);    //Initial push for acceleration towards player's position
+        rb.AddForce(targetDir.normalized * moveSpeed, ForceMode2D.Force);       //Move towards player's position
 
-        rb.AddForce(targetDir.normalized * impulseStr, ForceMode2D.Impulse);
-        rb.AddForce(targetDir.normalized * moveSpeed, ForceMode2D.Force);
+        Destroy(gameObject, 3);     //if it hasn't been killed, despawn by itself after 3 seconds so it doesn't exist offscreen for too long
     }
 
 }

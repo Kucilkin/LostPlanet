@@ -102,6 +102,7 @@ MonoBehaviour:
   MaxHP: 3
   CurrHP: 0
   HealthBar: {fileID: 0}
+  UIManager: {fileID: 0}
 --- !u!114 &1021403385440810051
 MonoBehaviour:
   m_ObjectHideFlags: 0

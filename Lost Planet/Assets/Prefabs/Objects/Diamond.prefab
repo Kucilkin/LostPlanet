@@ -122,4 +122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fefca6beb54ea9f42aff302e41757a4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UIManager: {fileID: 0}
+  UIManager: {fileID: 8160450228226317179, guid: c06481ea79e326e4fb0a7e72d9315f11, type: 3}
+  PlayerHP: {fileID: 0}
+  HealthBarRef: {fileID: 0}
+  NextSceneIDX: 0

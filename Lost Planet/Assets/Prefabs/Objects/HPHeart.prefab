@@ -98,7 +98,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UIManager: {fileID: 0}
   PlayerHP: {fileID: 5569026661135003305, guid: 2d0807421fe5a144db2ea6757a135366, type: 3}
-  HealthBarRef: {fileID: 5921890461398741315, guid: 0927c2b1dbd87c941b3f6358a0466957, type: 3}
+  HealthBarRef: {fileID: 0}
   NextSceneIDX: 0
 --- !u!61 &119368484
 BoxCollider2D:
