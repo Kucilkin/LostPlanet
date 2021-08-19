@@ -42558,6 +42558,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -5166172628136796968, guid: 2d0807421fe5a144db2ea6757a135366, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 502103469203877177, guid: 2d0807421fe5a144db2ea6757a135366, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -42609,7 +42613,11 @@ PrefabInstance:
     - target: {fileID: 2164679716479155430, guid: 2d0807421fe5a144db2ea6757a135366, type: 3}
       propertyPath: HealthBar
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1263275997}
+    - target: {fileID: 2164679716479155430, guid: 2d0807421fe5a144db2ea6757a135366, type: 3}
+      propertyPath: UIManager
+      value: 
+      objectReference: {fileID: 1263275996}
     - target: {fileID: 3463983678907454819, guid: 2d0807421fe5a144db2ea6757a135366, type: 3}
       propertyPath: m_LinearDrag
       value: 0

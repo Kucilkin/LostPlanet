@@ -5,7 +5,10 @@ using UnityEngine.UI;
 
 public class HealthBar : MonoBehaviour
 {
+    //Kevin's script
+
     public Slider HealthValue;  //Reference for the Slider moving the "Health Filling"
+
     /// <summary>
     /// Sets the MaxValue of the Slider to the maximum HP of the Player. Also sets current value to the Max Value.
     /// </summary>
@@ -23,5 +26,4 @@ public class HealthBar : MonoBehaviour
     {
         HealthValue.value = _health;
     }
-
 }

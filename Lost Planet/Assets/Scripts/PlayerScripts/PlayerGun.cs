@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerGun : MonoBehaviour
 {
+    //Kevin's script
+
     public GameObject PlayerProj;   //Player Projectile Prefab
 
     [SerializeField]
@@ -21,27 +23,28 @@ public class PlayerGun : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        #region Old Code
         //if (Player.GetComponent<PlayerController>().FacingRight == true)
         //    ShotDir = new Vector3(1,0,0);
         //else
         //    ShotDir = -transform.right;
-        Shoot();    //Should always be executed when Cooldown is over and Mouse 1 is pressed
+        #endregion
+        Shoot();
     }
 
     void Shoot()
     {
-        //Shooting
         if (currentCooldown <= 0)       //If the shot cooldown is 0 seconds or below -> be able to shoot 
         {
             if (Input.GetButton("Fire1"))    //Spawn a player projectile when Mouse 1 is pressed
             {
-                PlayerProjBehaviour proj = Instantiate(PlayerProj, gunPos.position, Quaternion.identity).GetComponent<PlayerProjBehaviour>();
-                proj.ShotDir = transform.right;
+                PlayerProjBehaviour proj = Instantiate(PlayerProj, gunPos.position, Quaternion.identity).GetComponent<PlayerProjBehaviour>();   //Save spawned bullet as an object
+                proj.ShotDir = transform.right;     //Set the ShotDir of saved projectile at each shot. Always transform.right because when player flips so do their x values
                 currentCooldown = shotCooldown;     //Reset the shot cooldown after each shot
             }
         }
         else
-            currentCooldown -= Time.deltaTime;  //If current cooldown is < 0 -> decrease by 1 second real time
+            currentCooldown -= Time.deltaTime;  //If current cooldown is > 0 -> decrease by 1 each second in real time
     }
 
 }

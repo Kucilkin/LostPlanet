@@ -93,6 +93,7 @@ public class PlayerController : MonoBehaviour
 
         }
         Animations();
+        GravityReset();
     }
 
     private void FixedUpdate()

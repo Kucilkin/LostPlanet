@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class PickupScript : MonoBehaviour
 {
+    //Kevin's script
+
     public GameObject UIManager;    //reference for the UIManager so Scenes can be switched
     public GameObject PlayerHP;     //Player reference
     public GameObject HealthBarRef; //Health Bar reference so health bar can be updated when health is replenished
@@ -22,7 +24,7 @@ public class PickupScript : MonoBehaviour
             {
                 float maxPlayerHP = PlayerHP.GetComponent<HealthSystem>().MaxHP;    //Max HP value of Player
                 float currPlayerHP = PlayerHP.GetComponent<HealthSystem>().CurrHP;  //Current HP value of Player
-                currPlayerHP += 30f;        //If the player collides with a Heart, replenish HP by 30
+                PlayerHP.GetComponent<HealthSystem>().CurrHP += 30f;        //If the player collides with a Heart, replenish HP by 30
 
                 if (currPlayerHP > maxPlayerHP)
                     currPlayerHP = maxPlayerHP;     //However, if the current HP exceed max HP, set current HP to max HP
