@@ -182,7 +182,7 @@ MonoBehaviour:
     m_Bits: 256
   CheckBox: {x: 0.9, y: 0.5}
   FeetTrans: {fileID: 4902064661606426096}
-  dashDistance: 5
+  dashDistance: 15
   FacingLeft: 0
 --- !u!114 &2164679716479155430
 MonoBehaviour:

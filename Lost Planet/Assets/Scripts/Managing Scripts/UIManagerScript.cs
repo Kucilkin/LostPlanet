@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class UIManagerScript : MonoBehaviour
 {
+    //Kevin's script
+
     private bool paused;    //bool value for pause state
     [SerializeField]
     private float gameOverDelay;    //Delay before Game Over screen should be shown
@@ -13,7 +15,7 @@ public class UIManagerScript : MonoBehaviour
     public GameObject GameOverScreen;   //GameOverScreen Reference
     //public GameObject Player;
     public GameObject BGM;      //Background Music Reference
-    public AudioSource DeathCry;
+    public AudioSource DeathCry;    //Deathsound of Player
 
     void Start()
     {
@@ -48,12 +50,12 @@ public class UIManagerScript : MonoBehaviour
     /// </summary>
     private void PauseGame()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))   //if escape is pressed 
+        if (Input.GetKeyDown(KeyCode.Escape))   //if escape is pressed...
         {
-            paused = !paused;                   //invert the bool value of paused
-            PauseMenu.SetActive(paused);        //and set the state of pause menu to bools value
+            paused = !paused;                   //...invert the bool value of paused...
+            PauseMenu.SetActive(paused);        //...and set the state of pause menu to bools value...
         }
-        if (paused == true)                     //additionally freeze the game when it's paused and unfreeze if not
+        if (paused == true)                     //...additionally freeze the game when it's paused and unfreeze if not
             Time.timeScale = 0;
         else
             Time.timeScale = 1;
@@ -75,7 +77,9 @@ public class UIManagerScript : MonoBehaviour
     {
         SceneManager.LoadScene(0);
     }
-
+    /// <summary>
+    /// Quits the Application (ends playing mode when in Unity editor)
+    /// </summary>
     public void QuitGameBtn()
     {
 #if UNITY_EDITOR
