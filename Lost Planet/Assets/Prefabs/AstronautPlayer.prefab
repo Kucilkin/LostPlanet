@@ -84,10 +84,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 502103469203877177}
-  - component: {fileID: 5792605897891528637}
-  - component: {fileID: 3463983678907454819}
   - component: {fileID: 7659964118355072409}
   - component: {fileID: 2164679716479155430}
+  - component: {fileID: 3463983678907454819}
+  - component: {fileID: 5792605897891528637}
   - component: {fileID: 7558171241918408812}
   m_Layer: 7
   m_Name: AstronautPlayer
@@ -113,6 +113,72 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7659964118355072409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5569026661135003305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c27c0d44dd9a024f80ba8fd910f7d13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Speed: 5
+  JumpForce: 17
+  MaxJumps: 1
+  jumpCounter: 0
+  playerModel: {fileID: 5569026661135003305}
+  GroundLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  CheckBox: {x: 0.9, y: 0.5}
+  FeetTrans: {fileID: 4902064661606426096}
+  dashDistance: 10
+  DashCoolDown: 1
+  FacingLeft: 0
+--- !u!114 &2164679716479155430
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5569026661135003305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6cb4272537d52a46a52e657ff4e2de0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxHP: 100
+  CurrHP: 0
+  LocatedOnPlayer: 1
+  HealthBar: {fileID: 0}
+  UIManager: {fileID: 0}
+  invincibilityTimer: 2
+  AnimIFrames: {fileID: 0}
+  DeathZoneValue: {x: 0, y: 0}
+--- !u!50 &3463983678907454819
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5569026661135003305}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 5
+  m_Material: {fileID: 6200000, guid: 17243c8ac0ac08b4495cd450be26a517, type: 2}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 4
 --- !u!61 &5792605897891528637
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -139,69 +205,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.2609842, y: 1.7003684}
   m_EdgeRadius: 0
---- !u!50 &3463983678907454819
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5569026661135003305}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 5
-  m_Material: {fileID: 6200000, guid: 17243c8ac0ac08b4495cd450be26a517, type: 2}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 1
-  m_Constraints: 4
---- !u!114 &7659964118355072409
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5569026661135003305}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c27c0d44dd9a024f80ba8fd910f7d13, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Speed: 5
-  JumpForce: 17
-  MaxJumps: 1
-  playerModel: {fileID: 5569026661135003305}
-  GroundLayer:
-    serializedVersion: 2
-    m_Bits: 256
-  CheckBox: {x: 0.9, y: 0.5}
-  FeetTrans: {fileID: 4902064661606426096}
-  dashDistance: 15
-  FacingLeft: 0
---- !u!114 &2164679716479155430
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5569026661135003305}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e6cb4272537d52a46a52e657ff4e2de0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MaxHP: 100
-  CurrHP: 0
-  LocatedOnPlayer: 1
-  HealthBar: {fileID: 0}
-  UIManager: {fileID: 0}
-  invincibilityTimer: 0
-  AnimIFrames: {fileID: 0}
 --- !u!95 &7558171241918408812
 Animator:
   serializedVersion: 3

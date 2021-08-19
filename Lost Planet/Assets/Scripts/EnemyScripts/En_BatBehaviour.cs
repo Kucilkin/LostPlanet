@@ -46,7 +46,7 @@ public class En_BatBehaviour : EnemyBase
         if (targetDir == default)   //targetDir should only be changed once at the beginning so it only charges at the player's position at this moment (so it doesn't relentlessly chase the player)
             targetDir = playerDetection;
         if (targetDir.x > 0)
-            transform.rotation = Quaternion.Euler(0, 180, 0);
+            transform.rotation = Quaternion.Euler(0, 180, 0);   //If the player is on the right side of the bat, rotate the bat by 180°
         rb.AddForce(targetDir.normalized * impulseStr, ForceMode2D.Impulse);    //Initial push for acceleration towards player's position
         rb.AddForce(targetDir.normalized * moveSpeed, ForceMode2D.Force);       //Move towards player's position
 
