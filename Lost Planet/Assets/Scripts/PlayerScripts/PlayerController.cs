@@ -9,7 +9,9 @@ public class PlayerController : MonoBehaviour
     private float xInput; // Spielereingabe
     //Springen:
     public float JumpForce; //Sprungkraft
-    public int MaxJumps; //maximale Spr?nge
+    [SerializeField]
+    public int MaxJumps;//maximale Spr?nge
+    [SerializeField]
     private int jumpCounter; //Sprungz?hler
 
     private Animator anim;
@@ -24,6 +26,8 @@ public class PlayerController : MonoBehaviour
     bool isDashing;
     float doubleTaptime;
     KeyCode lastKeyCode;
+    public float DashCoolDown = 5f;
+    private float nextDashTime;
     //Flip:
     public bool FacingLeft;
 
@@ -62,36 +66,47 @@ public class PlayerController : MonoBehaviour
         }
 
         //Dash Left:
-        if (Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKeyDown(KeyCode.Q) && Time.time > nextDashTime)
         {
-            if (doubleTaptime > Time.time && lastKeyCode == KeyCode.A)
+            if (doubleTaptime > Time.time && lastKeyCode == KeyCode.Q)
             {
                 StartCoroutine(Dash(-1f));
+                Debug.Log("TimeTime: " + Time.time);
+                nextDashTime = Time.time + DashCoolDown;
+                jumpCounter = 0;
             }
             else
             {
                 doubleTaptime = Time.time + 0.5f;
+                //Debug.Log("TimeTime: " + Time.time);
+                //nextDashTime = Time.time + DashCoolDown;
             }
 
-            lastKeyCode = KeyCode.A;
+            lastKeyCode = KeyCode.Q;
+            //nextDashTime = Time.time + CoolDownTime;
         }
 
         //Dash Right:
-        if (Input.GetKeyDown(KeyCode.D))
+        if (Input.GetKeyDown(KeyCode.E) && Time.time > nextDashTime)
         {
-            if (doubleTaptime > Time.time && lastKeyCode == KeyCode.D)
+            if (doubleTaptime > Time.time && lastKeyCode == KeyCode.E)
             {
                 StartCoroutine(Dash(1f));
+                Debug.Log("TimeTime: " + Time.time);
+                nextDashTime = Time.time + DashCoolDown;
+                jumpCounter = 0;
             }
             else
             {
                 doubleTaptime = Time.time + 0.5f;
+                //Debug.Log("TimeTime: " + Time.time);
+                //nextDashTime = Time.time + DashCoolDown;
             }
-
-            lastKeyCode = KeyCode.D;
-
-
+            
+            lastKeyCode = KeyCode.E;
+            //nextDashTime = Time.time + CoolDownTime;
         }
+
         Animations();
         GravityReset();
     }
@@ -138,7 +153,7 @@ public class PlayerController : MonoBehaviour
         RB.gravityScale = 0; //gravity auf 0
         yield return new WaitForSeconds(0.4f);
         isDashing = false;
-        RB.gravityScale = gravity; //gravity normal
+        RB.gravityScale = 5; //gravity normal
     }
 
     void Animations()
