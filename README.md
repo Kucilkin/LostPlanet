@@ -10,7 +10,7 @@ Animation of Player
 Script List:
 -Checkpoint (not in use)
 -GameMaster (not in use)
--PlayerController (und alles rund um den Player)
+-PlayerController (und alles rund um den Player ausser die Gun, seine Projektile und HP)
 -PauseMenu (unfortunately unused. Replaced by Kevin's UIMangerScript)
 -DeathZone (replaced)
 
@@ -45,6 +45,7 @@ PlayerShot SFX by nsstudios on freesound.org
 Tutorial BGM : Yoshis Island 2 - Crystal Cave		Nintendo
 CaveLevel BGM : Super Mario World - Underground Theme	Nintendo
 TowerLevel BGM: Super Metroid - Brinstar Overgrown Area 	Nintendo
+Main Menu BGM: Starbound OST - Procyon		Chucklefish
 Death Sound: Street Fighter 2 - Ryu KO sound	Capcom
 
 Heart Sprite by DonHellsing on itch.io
