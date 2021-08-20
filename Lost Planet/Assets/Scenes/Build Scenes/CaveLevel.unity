@@ -38177,7 +38177,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7659964118355072409, guid: 2d0807421fe5a144db2ea6757a135366, type: 3}
       propertyPath: DashCoolDown
-      value: 1
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 7659964118355072409, guid: 2d0807421fe5a144db2ea6757a135366, type: 3}
       propertyPath: dashDistance
