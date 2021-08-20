@@ -4422,7 +4422,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &419994823
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4470,7 +4470,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 419994822}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 191.56, y: -11.61, z: -1525.9656}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -4541,7 +4541,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 584018905}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 38.51, y: -2.71, z: -1359.429}
+  m_LocalPosition: {x: 87.13, y: 5.15, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -37225,6 +37225,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8160450228226317179, guid: c06481ea79e326e4fb0a7e72d9315f11, type: 3}
   m_PrefabInstance: {fileID: 8160450227669626172}
   m_PrefabAsset: {fileID: 0}
+--- !u!82 &657438280 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 2463351296925243856, guid: c06481ea79e326e4fb0a7e72d9315f11, type: 3}
+  m_PrefabInstance: {fileID: 8160450227669626172}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &681031420
 GameObject:
   m_ObjectHideFlags: 0
@@ -37457,7 +37462,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 817726194}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 40.6296, y: 8.570978, z: -1354.6367}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -37933,7 +37938,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.3920242, y: 5.0505075}
+  m_Size: {x: 0.3920242, y: 12.29}
   m_EdgeRadius: 0
 --- !u!4 &1280400464
 Transform:
@@ -37943,7 +37948,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1280400461}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 87.13, y: 5.22, z: -1359.429}
+  m_LocalPosition: {x: 159.6, y: -0.02, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -38130,6 +38135,14 @@ PrefabInstance:
       propertyPath: UIManager
       value: 
       objectReference: {fileID: 657438279}
+    - target: {fileID: 2164679716479155430, guid: 2d0807421fe5a144db2ea6757a135366, type: 3}
+      propertyPath: AnimIFrames
+      value: 
+      objectReference: {fileID: 1583172943}
+    - target: {fileID: 2164679716479155430, guid: 2d0807421fe5a144db2ea6757a135366, type: 3}
+      propertyPath: DeathZoneValue.y
+      value: -12.5
+      objectReference: {fileID: 0}
     - target: {fileID: 4902064661606426096, guid: 2d0807421fe5a144db2ea6757a135366, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.206
@@ -38169,9 +38182,9 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5569026661135003305, guid: 2d0807421fe5a144db2ea6757a135366, type: 3}
   m_PrefabInstance: {fileID: 1583172941}
   m_PrefabAsset: {fileID: 0}
---- !u!82 &1583172943 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: -5166172628136796968, guid: 2d0807421fe5a144db2ea6757a135366, type: 3}
+--- !u!95 &1583172943 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 7558171241918408812, guid: 2d0807421fe5a144db2ea6757a135366, type: 3}
   m_PrefabInstance: {fileID: 1583172941}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1689586801
@@ -126853,7 +126866,7 @@ PrefabInstance:
     - target: {fileID: 8160450228226317172, guid: c06481ea79e326e4fb0a7e72d9315f11, type: 3}
       propertyPath: DeathCry
       value: 
-      objectReference: {fileID: 1583172943}
+      objectReference: {fileID: 657438280}
     - target: {fileID: 8160450228226317179, guid: c06481ea79e326e4fb0a7e72d9315f11, type: 3}
       propertyPath: m_Name
       value: UI
