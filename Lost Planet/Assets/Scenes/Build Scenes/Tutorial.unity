@@ -286,8 +286,20 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7659964118355072409, guid: 2d0807421fe5a144db2ea6757a135366, type: 3}
+      propertyPath: DashForce
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 7659964118355072409, guid: 2d0807421fe5a144db2ea6757a135366, type: 3}
       propertyPath: CheckBox.y
       value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7659964118355072409, guid: 2d0807421fe5a144db2ea6757a135366, type: 3}
+      propertyPath: DashCoolDown
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7659964118355072409, guid: 2d0807421fe5a144db2ea6757a135366, type: 3}
+      propertyPath: StartDashTimer
+      value: 0.25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2d0807421fe5a144db2ea6757a135366, type: 3}
