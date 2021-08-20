@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Moritz's Script
+
 public class PlayerController : MonoBehaviour
 {
     //Movement:
@@ -13,7 +15,7 @@ public class PlayerController : MonoBehaviour
     public int MaxJumps;//maximale Spr?nge
     [SerializeField]
     private int jumpCounter; //Sprungz?hler
-
+    
     private Animator anim;
     private Rigidbody2D RB;
     public GameObject playerModel;
@@ -48,11 +50,11 @@ public class PlayerController : MonoBehaviour
         if (RB.velocity.y <= 0)
             GroundCheck(); // GroundCheck aufrufen
 
-        if (xInput < 0 && !FacingLeft)
+        if (xInput < 0 && !FacingLeft) //Flip rechts 
         {
             Flip();
         }
-        else if (xInput > 0 && FacingLeft)
+        else if (xInput > 0 && FacingLeft) //Flip links
         {
             Flip();
         }
@@ -77,8 +79,8 @@ public class PlayerController : MonoBehaviour
             
             
             Debug.Log("TimeTime: " + Time.time);
-            nextDashTime = Time.time + DashCoolDown;
-            jumpCounter = 0;
+            nextDashTime = Time.time + DashCoolDown; //Dashcooldown läuft runter nach benutzen vom Dash
+            jumpCounter = 0; //nach Dash wird Jumpcounter auf 0 
         }
 
         if (isDashing)
@@ -102,14 +104,14 @@ public class PlayerController : MonoBehaviour
             RB.velocity = new Vector2(xInput * Speed, RB.velocity.y); //Vorf?rtsbewegung
     }
 
-    //Drehen:
+    //Drehen: Player wird um 180° rotiert
     void Flip()
     {
         FacingLeft = !FacingLeft;
         transform.Rotate(0, 180f, 0);
     }
 
-    //Groundcheck:
+    //Groundcheck: bei Groundcheck wird Jumpcounter auf Maxjumps zurückgesetzt
     void GroundCheck()
     {
 
@@ -121,7 +123,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    //GroundcheckBox:
+    //GroundcheckBox: Laserbox die mit dem Boden kollidiert und reagiert wenn Groundkontakt da ist
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
@@ -141,13 +143,15 @@ public class PlayerController : MonoBehaviour
     //    RB.gravityScale = 5; //gravity normal
     //}
 
+    //Animations:
     void Animations()
     {
-        anim.SetFloat("xInputAbs", Mathf.Abs(xInput));
-        anim.SetFloat("yVelocity", RB.velocity.y);
+        anim.SetFloat("xInputAbs", Mathf.Abs(xInput)); //Runanimation   
+        anim.SetFloat("yVelocity", RB.velocity.y); //Jumpanimation
     }
 
-    void GravityReset()
+    //Gravityreset: 
+    void GravityReset() 
     {
         if (Input.GetKeyDown(KeyCode.G))
             RB.gravityScale = 5;
