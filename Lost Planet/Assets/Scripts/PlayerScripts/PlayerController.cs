@@ -22,10 +22,13 @@ public class PlayerController : MonoBehaviour
     public Vector2 CheckBox;
     public Transform FeetTrans;
     //Dash:
-    public float dashDistance = 15f;
     bool isDashing;
-    float doubleTaptime;
-    KeyCode lastKeyCode;
+    public float DashForce = 15f;
+    public float StartDashTimer;
+
+    float CurrentDashTimer;
+    float DashDirection;
+    [SerializeField]
     public float DashCoolDown = 5f;
     private float nextDashTime;
     //Flip:
@@ -65,46 +68,28 @@ public class PlayerController : MonoBehaviour
             Debug.Log("JumpCounter: " + jumpCounter);
         }
 
-        //Dash Left:
-        if (Input.GetKeyDown(KeyCode.Q) && Time.time > nextDashTime)
+        //Dash:
+        if (Input.GetKeyDown(KeyCode.LeftShift) && jumpCounter <= 1 && xInput != 0 && Time.time > nextDashTime)
         {
-            if (doubleTaptime > Time.time && lastKeyCode == KeyCode.Q)
-            {
-                StartCoroutine(Dash(-1f));
-                Debug.Log("TimeTime: " + Time.time);
-                nextDashTime = Time.time + DashCoolDown;
-                jumpCounter = 0;
-            }
-            else
-            {
-                doubleTaptime = Time.time + 0.5f;
-                //Debug.Log("TimeTime: " + Time.time);
-                //nextDashTime = Time.time + DashCoolDown;
-            }
-
-            lastKeyCode = KeyCode.Q;
-            //nextDashTime = Time.time + CoolDownTime;
+            isDashing = true;
+            CurrentDashTimer = StartDashTimer;
+            RB.velocity = Vector2.zero;
+            DashDirection = xInput;
+            
+            Debug.Log("TimeTime: " + Time.time);
+            nextDashTime = Time.time + DashCoolDown;
+            jumpCounter = 0;
         }
 
-        //Dash Right:
-        if (Input.GetKeyDown(KeyCode.E) && Time.time > nextDashTime)
+        if (isDashing)
         {
-            if (doubleTaptime > Time.time && lastKeyCode == KeyCode.E)
+            RB.velocity = transform.right * DashDirection * DashForce;
+            CurrentDashTimer -= Time.deltaTime;
+
+            if (CurrentDashTimer <= 0)
             {
-                StartCoroutine(Dash(1f));
-                Debug.Log("TimeTime: " + Time.time);
-                nextDashTime = Time.time + DashCoolDown;
-                jumpCounter = 0;
+                isDashing = false;
             }
-            else
-            {
-                doubleTaptime = Time.time + 0.5f;
-                //Debug.Log("TimeTime: " + Time.time);
-                //nextDashTime = Time.time + DashCoolDown;
-            }
-            
-            lastKeyCode = KeyCode.E;
-            //nextDashTime = Time.time + CoolDownTime;
         }
 
         Animations();
@@ -144,17 +129,17 @@ public class PlayerController : MonoBehaviour
     }
 
     //Dash:
-    IEnumerator Dash(float direction)
-    {
-        isDashing = true;
-        RB.velocity = new Vector2(RB.velocity.x, 0f);
-        RB.AddForce(new Vector2(dashDistance * direction, 0f), ForceMode2D.Impulse);
-        float gravity = RB.gravityScale;
-        RB.gravityScale = 0; //gravity auf 0
-        yield return new WaitForSeconds(0.4f);
-        isDashing = false;
-        RB.gravityScale = 5; //gravity normal
-    }
+    //IEnumerator Dash(float direction)
+    //{
+    //    isDashing = true;
+    //    RB.velocity = new Vector2(RB.velocity.x, 0f);
+    //    RB.AddForce(new Vector2(DashForce * direction, 0f), ForceMode2D.Impulse);
+    //    float gravity = RB.gravityScale;
+    //    RB.gravityScale = 0; //gravity auf 0
+    //    yield return new WaitForSeconds(0.4f);
+    //    isDashing = false;
+    //    RB.gravityScale = 5; //gravity normal
+    //}
 
     void Animations()
     {
