@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EnemyBase : MonoBehaviour
 {
+    //Kevin's script
+
     [SerializeField]
     private float damage;       //The Damage the enemy deals through contact
     public float moveSpeed;     //The movement speed of the enemy

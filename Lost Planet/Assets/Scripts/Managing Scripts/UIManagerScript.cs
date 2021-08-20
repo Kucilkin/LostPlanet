@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class UIManagerScript : MonoBehaviour
 {
+    //Kevin's script
+
     private bool paused;    //bool value for pause state
     [SerializeField]
     private float gameOverDelay;    //Delay before Game Over screen should be shown
@@ -13,6 +15,7 @@ public class UIManagerScript : MonoBehaviour
     public GameObject GameOverScreen;   //GameOverScreen Reference
     //public GameObject Player;
     public GameObject BGM;      //Background Music Reference
+    public AudioSource DeathCry;    //Deathsound of Player
 
     void Start()
     {
@@ -35,16 +38,24 @@ public class UIManagerScript : MonoBehaviour
     }
 
     /// <summary>
+    /// Load Scene 1 when play button is pressed
+    /// </summary>
+    public void PlayGameBtn()
+    {
+        SceneManager.LoadScene(1);
+    }
+
+    /// <summary>
     /// Pauses the game when Escape is pressed and stops time
     /// </summary>
     private void PauseGame()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))   //if escape is pressed 
+        if (Input.GetKeyDown(KeyCode.Escape))   //if escape is pressed...
         {
-            paused = !paused;                   //invert the bool value of paused
-            PauseMenu.SetActive(paused);        //and set the state of pause menu to bools value
+            paused = !paused;                   //...invert the bool value of paused...
+            PauseMenu.SetActive(paused);        //...and set the state of pause menu to bools value...
         }
-        if (paused == true)                     //additionally freeze the game when it's paused and unfreeze if not
+        if (paused == true)                     //...additionally freeze the game when it's paused and unfreeze if not
             Time.timeScale = 0;
         else
             Time.timeScale = 1;
@@ -62,11 +73,21 @@ public class UIManagerScript : MonoBehaviour
     /// <summary>
     /// Quits the active scene and loads the main menu
     /// </summary>
-    public void QuitBtn()
+    public void QuitToMainMenuBtn()
     {
         SceneManager.LoadScene(0);
     }
-
+    /// <summary>
+    /// Quits the Application (ends playing mode when in Unity editor)
+    /// </summary>
+    public void QuitGameBtn()
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
+    }
     /// <summary>
     /// Loads active scene from beginning to retry the stage
     /// </summary>
@@ -91,6 +112,7 @@ public class UIManagerScript : MonoBehaviour
     {
         //Destroy(Player);
         Destroy(BGM);
+        DeathCry.Play();
         yield return new WaitForSeconds(gameOverDelay); //wait for delay before showing game over screen
         GameOverScreen.SetActive(true); //Show the game over screen
     }

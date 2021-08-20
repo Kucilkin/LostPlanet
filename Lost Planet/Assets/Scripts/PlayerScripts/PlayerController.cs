@@ -9,7 +9,9 @@ public class PlayerController : MonoBehaviour
     private float xInput; // Spielereingabe
     //Springen:
     public float JumpForce; //Sprungkraft
-    public int MaxJumps; //maximale Spr?nge
+    [SerializeField]
+    public int MaxJumps;//maximale Spr?nge
+    [SerializeField]
     private int jumpCounter; //Sprungz?hler
 
     private Animator anim;
@@ -20,15 +22,21 @@ public class PlayerController : MonoBehaviour
     public Vector2 CheckBox;
     public Transform FeetTrans;
     //Dash:
-    public float dashDistance = 15f;
     bool isDashing;
-    float doubleTaptime;
-    KeyCode lastKeyCode;
+    public float DashForce = 15f;
+    public float StartDashTimer;
+
+    float CurrentDashTimer;
+    float DashDirection;
+    [SerializeField]
+    public float DashCoolDown = 5f;
+    private float nextDashTime;
     //Flip:
     public bool FacingLeft;
 
     void Start()
     {
+        jumpCounter = MaxJumps;
         RB = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
     }
@@ -36,7 +44,9 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         xInput = Input.GetAxisRaw("Horizontal"); //Eingabesignal f?rs laufen
-        GroundCheck(); // GroundCheck aufrufen
+
+        if (RB.velocity.y <= 0)
+            GroundCheck(); // GroundCheck aufrufen
 
         if (xInput < 0 && !FacingLeft)
         {
@@ -55,45 +65,40 @@ public class PlayerController : MonoBehaviour
             RB.velocity = JumpPower;
             Debug.Log("Jump");
             jumpCounter--;
+            Debug.Log("JumpCounter: " + jumpCounter);
         }
 
-        //Dash Left:
-        if (Input.GetKeyDown(KeyCode.A))
+        //Dash:
+        if (Input.GetKeyDown(KeyCode.LeftShift) && jumpCounter <= 1 && xInput != 0 && Time.time > nextDashTime)
         {
-            if (doubleTaptime > Time.time && lastKeyCode == KeyCode.A)
-            {
-                StartCoroutine(Dash(-1f));
-            }
-            else
-            {
-                doubleTaptime = Time.time + 0.5f;
-            }
-
-            lastKeyCode = KeyCode.A;
-        }
-
-        //Dash Right:
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            if (doubleTaptime > Time.time && lastKeyCode == KeyCode.D)
-            {
-                StartCoroutine(Dash(1f));
-            }
-            else
-            {
-                doubleTaptime = Time.time + 0.5f;
-            }
-
-            lastKeyCode = KeyCode.D;
-
+            isDashing = true;
+            CurrentDashTimer = StartDashTimer;
+            RB.velocity = Vector2.zero;
+            DashDirection = xInput;
             
+            Debug.Log("TimeTime: " + Time.time);
+            nextDashTime = Time.time + DashCoolDown;
+            jumpCounter = 0;
         }
+
+        if (isDashing)
+        {
+            RB.velocity = transform.right * DashDirection * DashForce;
+            CurrentDashTimer -= Time.deltaTime;
+
+            if (CurrentDashTimer <= 0)
+            {
+                isDashing = false;
+            }
+        }
+
         Animations();
+        GravityReset();
     }
 
     private void FixedUpdate()
     {
-        if (xInput != 0 && !isDashing)
+        if (!isDashing)
             RB.velocity = new Vector2(xInput * Speed, RB.velocity.y); //Vorf?rtsbewegung
     }
 
@@ -107,6 +112,7 @@ public class PlayerController : MonoBehaviour
     //Groundcheck:
     void GroundCheck()
     {
+
         Collider2D checkBox = Physics2D.OverlapBox(FeetTrans.position, CheckBox, 1, GroundLayer);
         if (checkBox)
         {
@@ -123,21 +129,27 @@ public class PlayerController : MonoBehaviour
     }
 
     //Dash:
-    IEnumerator Dash(float direction)
-    {
-        isDashing = true;
-        RB.velocity = new Vector2(RB.velocity.x, 0f);
-        RB.AddForce(new Vector2(dashDistance * direction, 0f), ForceMode2D.Impulse);
-        float gravity = RB.gravityScale;
-        RB.gravityScale = 0; //gravity auf 0
-        yield return new WaitForSeconds(0.4f);
-        isDashing = false;
-        RB.gravityScale = gravity; //gravity normal
-    }
+    //IEnumerator Dash(float direction)
+    //{
+    //    isDashing = true;
+    //    RB.velocity = new Vector2(RB.velocity.x, 0f);
+    //    RB.AddForce(new Vector2(DashForce * direction, 0f), ForceMode2D.Impulse);
+    //    float gravity = RB.gravityScale;
+    //    RB.gravityScale = 0; //gravity auf 0
+    //    yield return new WaitForSeconds(0.4f);
+    //    isDashing = false;
+    //    RB.gravityScale = 5; //gravity normal
+    //}
 
     void Animations()
     {
         anim.SetFloat("xInputAbs", Mathf.Abs(xInput));
         anim.SetFloat("yVelocity", RB.velocity.y);
+    }
+
+    void GravityReset()
+    {
+        if (Input.GetKeyDown(KeyCode.G))
+            RB.gravityScale = 5;
     }
 }
