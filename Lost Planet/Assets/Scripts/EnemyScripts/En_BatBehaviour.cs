@@ -26,6 +26,8 @@ public class En_BatBehaviour : EnemyBase
     }
     private void FixedUpdate()
     {
+        if (player == null)
+            return;
         playerDetection = player.position - transform.position; //Constantly draws a Vector bewtween own and the player's Position
         if (playerDetection.magnitude <= PlayerDetectionRange)    //As soon as player's distance to Bat is below 10 -> Enable Movement
             StartCoroutine("BatMovement");
@@ -46,7 +48,7 @@ public class En_BatBehaviour : EnemyBase
         if (targetDir == default)   //targetDir should only be changed once at the beginning so it only charges at the player's position at this moment (so it doesn't relentlessly chase the player)
             targetDir = playerDetection;
         if (targetDir.x > 0)
-            transform.rotation = Quaternion.Euler(0, 180, 0);   //If the player is on the right side of the bat, rotate the bat by 180°
+            transform.rotation = Quaternion.Euler(0, 180, 0);   //If the player is on the right side of the bat, rotate the bat by 180?
         rb.AddForce(targetDir.normalized * impulseStr, ForceMode2D.Impulse);    //Initial push for acceleration towards player's position
         rb.AddForce(targetDir.normalized * moveSpeed, ForceMode2D.Force);       //Move towards player's position
 

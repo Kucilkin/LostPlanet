@@ -34,6 +34,8 @@ public class PlayerController : MonoBehaviour
     //Flip:
     public bool FacingLeft;
 
+    
+
     void Start()
     {
         jumpCounter = MaxJumps;
@@ -83,7 +85,8 @@ public class PlayerController : MonoBehaviour
 
         if (isDashing)
         {
-            RB.velocity = transform.right * DashDirection * DashForce;
+            RB.velocity = transform.right * DashForce;
+            Debug.Log("velocity: " + RB.velocity);
             CurrentDashTimer -= Time.deltaTime;
 
             if (CurrentDashTimer <= 0)

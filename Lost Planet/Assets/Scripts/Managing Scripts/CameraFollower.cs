@@ -15,6 +15,8 @@ public class CameraFollower : MonoBehaviour
 
     private void LateUpdate()
     {
+        if (Player == null)
+            return;
         if (snapToYAxis == true && snapToXAxis == false)
         transform.position = new Vector3(Player.position.x, transform.position.y, 0) + offset;  /*Constantly make the Camera follow the player's x Position, but remain stationary on
                                                                                                  the other Axes. Lateupdate so there is no Jitter*/

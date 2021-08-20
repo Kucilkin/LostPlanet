@@ -5,9 +5,22 @@ using UnityEngine;
 public class GameMaster : MonoBehaviour
 {
     //aktulle Position
-    public GameObject CurrentCheckpoint;
+    public static GameObject CurrentCheckpoint;
     //Player GameObejct
     public GameObject Player;
+
+
+    private void Awake()
+    {
+        if (CurrentCheckpoint != null)
+        {
+
+
+            Player.transform.position = CurrentCheckpoint.transform.position;
+            Debug.Log("checkpoint set by GameMaster");
+        }
+            
+    }
 
     public void RespawnPlayer()
     {

@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Checkpoint : MonoBehaviour
 {
-    public GameMaster GameMaster;
+    public GameMaster GameMasterObject;
 
     void Start()
     {
-        GameMaster = FindObjectOfType<GameMaster>();
+        GameMasterObject = FindObjectOfType<GameMaster>();
     }
 
     void Update()
@@ -22,6 +22,7 @@ public class Checkpoint : MonoBehaviour
         {
             Debug.Log("Checkpoint 1");
             GameMaster.CurrentCheckpoint = gameObject;
+            Debug.Log("currentcheckpoint" + GameMaster.CurrentCheckpoint);
         }
     }
 }
