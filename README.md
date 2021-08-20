@@ -8,8 +8,11 @@ Moritz:
 Animation of Player
 
 Script List:
--PlayerController
+-Checkpoint (not in use)
+-GameMaster (not in use)
+-PlayerController (und alles rund um den Player)
 -PauseMenu (unfortunately unused. Replaced by Kevin's UIMangerScript)
+-DeathZone (replaced)
 
 
 Kevin:

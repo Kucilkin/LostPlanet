@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Moritz's Script
+
 public class PlayerController : MonoBehaviour
 {
     //Movement:
@@ -13,7 +15,7 @@ public class PlayerController : MonoBehaviour
     public int MaxJumps;//maximale Spr?nge
     [SerializeField]
     private int jumpCounter; //Sprungz?hler
-
+    
     private Animator anim;
     private Rigidbody2D RB;
     public GameObject playerModel;
@@ -22,10 +24,13 @@ public class PlayerController : MonoBehaviour
     public Vector2 CheckBox;
     public Transform FeetTrans;
     //Dash:
-    public float dashDistance = 15f;
     bool isDashing;
-    float doubleTaptime;
-    KeyCode lastKeyCode;
+    public float DashForce = 15f;
+    public float StartDashTimer;
+
+    float CurrentDashTimer;
+    float DashDirection;
+    [SerializeField]
     public float DashCoolDown = 5f;
     private float nextDashTime;
     //Flip:
@@ -45,11 +50,11 @@ public class PlayerController : MonoBehaviour
         if (RB.velocity.y <= 0)
             GroundCheck(); // GroundCheck aufrufen
 
-        if (xInput < 0 && !FacingLeft)
+        if (xInput < 0 && !FacingLeft) //Flip rechts 
         {
             Flip();
         }
-        else if (xInput > 0 && FacingLeft)
+        else if (xInput > 0 && FacingLeft) //Flip links
         {
             Flip();
         }
@@ -65,46 +70,28 @@ public class PlayerController : MonoBehaviour
             Debug.Log("JumpCounter: " + jumpCounter);
         }
 
-        //Dash Left:
-        if (Input.GetKeyDown(KeyCode.Q) && Time.time > nextDashTime)
+        //Dash:
+        if (Input.GetKeyDown(KeyCode.LeftShift) && jumpCounter <= 1 && xInput != 0 && Time.time > nextDashTime)
         {
-            if (doubleTaptime > Time.time && lastKeyCode == KeyCode.Q)
-            {
-                StartCoroutine(Dash(-1f));
-                Debug.Log("TimeTime: " + Time.time);
-                nextDashTime = Time.time + DashCoolDown;
-                jumpCounter = 0;
-            }
-            else
-            {
-                doubleTaptime = Time.time + 0.5f;
-                //Debug.Log("TimeTime: " + Time.time);
-                //nextDashTime = Time.time + DashCoolDown;
-            }
-
-            lastKeyCode = KeyCode.Q;
-            //nextDashTime = Time.time + CoolDownTime;
+            isDashing = true;
+            CurrentDashTimer = StartDashTimer;
+            RB.velocity = Vector2.zero;
+            
+            
+            Debug.Log("TimeTime: " + Time.time);
+            nextDashTime = Time.time + DashCoolDown; //Dashcooldown läuft runter nach benutzen vom Dash
+            jumpCounter = 0; //nach Dash wird Jumpcounter auf 0 
         }
 
-        //Dash Right:
-        if (Input.GetKeyDown(KeyCode.E) && Time.time > nextDashTime)
+        if (isDashing)
         {
-            if (doubleTaptime > Time.time && lastKeyCode == KeyCode.E)
+            RB.velocity = transform.right * DashForce;
+            CurrentDashTimer -= Time.deltaTime;
+
+            if (CurrentDashTimer <= 0)
             {
-                StartCoroutine(Dash(1f));
-                Debug.Log("TimeTime: " + Time.time);
-                nextDashTime = Time.time + DashCoolDown;
-                jumpCounter = 0;
+                isDashing = false;
             }
-            else
-            {
-                doubleTaptime = Time.time + 0.5f;
-                //Debug.Log("TimeTime: " + Time.time);
-                //nextDashTime = Time.time + DashCoolDown;
-            }
-            
-            lastKeyCode = KeyCode.E;
-            //nextDashTime = Time.time + CoolDownTime;
         }
 
         Animations();
@@ -117,14 +104,14 @@ public class PlayerController : MonoBehaviour
             RB.velocity = new Vector2(xInput * Speed, RB.velocity.y); //Vorf?rtsbewegung
     }
 
-    //Drehen:
+    //Drehen: Player wird um 180° rotiert
     void Flip()
     {
         FacingLeft = !FacingLeft;
         transform.Rotate(0, 180f, 0);
     }
 
-    //Groundcheck:
+    //Groundcheck: bei Groundcheck wird Jumpcounter auf Maxjumps zurückgesetzt
     void GroundCheck()
     {
 
@@ -136,7 +123,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    //GroundcheckBox:
+    //GroundcheckBox: Laserbox die mit dem Boden kollidiert und reagiert wenn Groundkontakt da ist
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
@@ -144,25 +131,27 @@ public class PlayerController : MonoBehaviour
     }
 
     //Dash:
-    IEnumerator Dash(float direction)
-    {
-        isDashing = true;
-        RB.velocity = new Vector2(RB.velocity.x, 0f);
-        RB.AddForce(new Vector2(dashDistance * direction, 0f), ForceMode2D.Impulse);
-        float gravity = RB.gravityScale;
-        RB.gravityScale = 0; //gravity auf 0
-        yield return new WaitForSeconds(0.4f);
-        isDashing = false;
-        RB.gravityScale = 5; //gravity normal
-    }
+    //IEnumerator Dash(float direction)
+    //{
+    //    isDashing = true;
+    //    RB.velocity = new Vector2(RB.velocity.x, 0f);
+    //    RB.AddForce(new Vector2(DashForce * direction, 0f), ForceMode2D.Impulse);
+    //    float gravity = RB.gravityScale;
+    //    RB.gravityScale = 0; //gravity auf 0
+    //    yield return new WaitForSeconds(0.4f);
+    //    isDashing = false;
+    //    RB.gravityScale = 5; //gravity normal
+    //}
 
+    //Animations:
     void Animations()
     {
-        anim.SetFloat("xInputAbs", Mathf.Abs(xInput));
-        anim.SetFloat("yVelocity", RB.velocity.y);
+        anim.SetFloat("xInputAbs", Mathf.Abs(xInput)); //Runanimation   
+        anim.SetFloat("yVelocity", RB.velocity.y); //Jumpanimation
     }
 
-    void GravityReset()
+    //Gravityreset: 
+    void GravityReset() 
     {
         if (Input.GetKeyDown(KeyCode.G))
             RB.gravityScale = 5;

@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Moritz's Script
+
 public class Checkpoint : MonoBehaviour
 {
     public GameMaster GameMaster;
