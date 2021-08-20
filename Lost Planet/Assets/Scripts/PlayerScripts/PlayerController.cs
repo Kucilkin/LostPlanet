@@ -74,7 +74,7 @@ public class PlayerController : MonoBehaviour
             isDashing = true;
             CurrentDashTimer = StartDashTimer;
             RB.velocity = Vector2.zero;
-            DashDirection = xInput;
+            
             
             Debug.Log("TimeTime: " + Time.time);
             nextDashTime = Time.time + DashCoolDown;
@@ -83,7 +83,7 @@ public class PlayerController : MonoBehaviour
 
         if (isDashing)
         {
-            RB.velocity = transform.right * DashDirection * DashForce;
+            RB.velocity = transform.right * DashForce;
             CurrentDashTimer -= Time.deltaTime;
 
             if (CurrentDashTimer <= 0)
